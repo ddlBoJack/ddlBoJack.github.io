@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="mask-icon" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/lib/animate-css/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bojack.space","root":"/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="比较随意的刷题记录，可能包含CSP，NOIP，leetcode，etc.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OI刷题记录">
+<meta property="og:url" content="bojack.space/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95">
+<meta property="og:site_name" content="憨憨coding">
+<meta property="og:description" content="比较随意的刷题记录，可能包含CSP，NOIP，leetcode，etc.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg">
+<meta property="article:published_time" content="2020-07-15T06:20:56.000Z">
+<meta property="article:modified_time" content="2020-07-25T08:18:15.349Z">
+<meta property="article:author" content="BoJack">
+<meta property="article:tag" content="OI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg">
+
+<link rel="canonical" href="bojack.space/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>OI刷题记录 | 憨憨coding</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">憨憨coding</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Be what you wanna be</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OI刷题记录"><span class="nav-number">1.</span> <span class="nav-text">OI刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode"><span class="nav-number">1.1.</span> <span class="nav-text">leetcode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NOI"><span class="nav-number">1.2.</span> <span class="nav-text">NOI</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="BoJack"
+      src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
+  <p class="site-author-name" itemprop="name">BoJack</p>
+  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ddlBoJack" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ddlBoJack" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_45019478" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_45019478" rel="noopener" target="_blank"><i class="crosshairs fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="bojack.space/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
+      <meta itemprop="name" content="BoJack">
+      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="憨憨coding">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OI刷题记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-15 14:20:56" itemprop="dateCreated datePublished" datetime="2020-07-15T14:20:56+08:00">2020-07-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-25 16:18:15" itemprop="dateModified" datetime="2020-07-25T16:18:15+08:00">2020-07-25</time>
+              </span>
+
+          
+            <span id="/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95" class="post-meta-item leancloud_visitors" data-flag-title="OI刷题记录" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">比较随意的刷题记录，可能包含CSP，NOIP，leetcode，etc.</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
+<h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
+<p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
+<p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
+<p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
+<p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
+<p>一道dp，令dp[i]为以 1…i为节点组成的二叉搜索树种数，可以看成以1…i为根的二叉搜索树之和，其中root(j)=dp[j-1]*dp[i-j]，即左右子树二叉搜索树种数之积。</p>
+<h2 id="NOI"><a href="#NOI" class="headerlink" title="NOI"></a>NOI</h2><p><a href="http://noi.openjudge.cn/ch0206/1996/" target="_blank" rel="noopener">1996:登山</a></p>
+<p>一道动态规划，有点文字游戏，要考虑下山过程也会参观景点，复杂度$O(n^2)$</p>
+<p><a href="http://noi.openjudge.cn/ch0405/2454/" target="_blank" rel="noopener">2454:雷涛的小猫</a></p>
+<p>动态规划，分两种情况转移，一种是跳过来，一种直接下爬一格，复杂度$O(n^2)$。注意跳过来的数，即高度为h的最大值。</p>
+<p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
+<p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请BoJack喝杯咖啡</div>
+  <button onclick="document.getElementById('post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div id="post-reward">
+      
+      <div>
+        <img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/C1B6A89B427037B3B5DDB6A11C6E2621.JPG" alt="BoJack 微信">
+        <p>微信</p>
+      </div>
+      
+      <div>
+        <img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/547E695D9C78EF345CEDF39EB2A05632.JPG" alt="BoJack 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>BoJack
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/bojack.space/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95" title="OI刷题记录">bojack.space/uncategorized/OI刷题记录</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OI/" rel="tag"># OI</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/uncategorized/%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" rel="prev" title="建模学习相关资料">
+      <i class="fa fa-chevron-left"></i> 建模学习相关资料
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BoJack</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/next-theme/pjax@0/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  if (hasTOC) {
+    document.querySelector('.sidebar-nav-toc').click();
+  } else {
+    document.querySelector('.sidebar-nav-overview').click();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: location.pathname,
+    }, {"enable":true,"appId":"6uMAH508bXao5UhHV0HP16nD-gzGzoHsz","appKey":"WFzi3WuNocMdKMI0EBAow3Qi","placeholder":"欢迎点评指正~","avatar":"mm","meta":["nick","mail"],"pageSize":10,"language":"zh-cn","visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null}
+    ));
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

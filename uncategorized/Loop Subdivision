@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png">
+  <link rel="mask-icon" href="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/憨_可爱_大.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/lib/animate-css/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"bojack.space","root":"/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="for GAMES 101 Final Project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Loop Subdivision for GAMES 101 Final Project">
+<meta property="og:url" content="bojack.space/uncategorized/Loop%20Subdivision">
+<meta property="og:site_name" content="憨憨coding">
+<meta property="og:description" content="for GAMES 101 Final Project">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135917192.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135936070.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135950441.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133707642.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133834153.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134103022.png">
+<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134227795.png">
+<meta property="article:published_time" content="2020-07-06T15:59:37.000Z">
+<meta property="article:modified_time" content="2020-07-12T12:05:20.000Z">
+<meta property="article:author" content="BoJack">
+<meta property="article:tag" content="CG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png">
+
+<link rel="canonical" href="bojack.space/uncategorized/Loop%20Subdivision">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Loop Subdivision for GAMES 101 Final Project | 憨憨coding</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">憨憨coding</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Be what you wanna be</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Loop-Subdivision"><span class="nav-number">1.</span> <span class="nav-text">Loop Subdivision</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">1.2.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loop-Subdivision算法简述"><span class="nav-number">1.2.1.</span> <span class="nav-text">Loop Subdivision算法简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新策略"><span class="nav-number">1.2.2.</span> <span class="nav-text">更新策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三角面细分操作"><span class="nav-number">1.2.3.</span> <span class="nav-text">三角面细分操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.3.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译"><span class="nav-number">1.4.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">1.5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">1.6.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bunny"><span class="nav-number">1.6.1.</span> <span class="nav-text">bunny</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#teapot"><span class="nav-number">1.6.2.</span> <span class="nav-text">teapot</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频展示"><span class="nav-number">1.7.</span> <span class="nav-text">视频展示</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="BoJack"
+      src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
+  <p class="site-author-name" itemprop="name">BoJack</p>
+  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ddlBoJack" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ddlBoJack" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/weixin_45019478" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_45019478" rel="noopener" target="_blank"><i class="crosshairs fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="bojack.space/uncategorized/Loop%20Subdivision">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
+      <meta itemprop="name" content="BoJack">
+      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="憨憨coding">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Loop Subdivision for GAMES 101 Final Project
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-06 23:59:37" itemprop="dateCreated datePublished" datetime="2020-07-06T23:59:37+08:00">2020-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-12 20:05:20" itemprop="dateModified" datetime="2020-07-12T20:05:20+08:00">2020-07-12</time>
+              </span>
+
+          
+            <span id="/uncategorized/Loop%20Subdivision" class="post-meta-item leancloud_visitors" data-flag-title="Loop Subdivision for GAMES 101 Final Project" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/uncategorized/Loop%20Subdivision#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/Loop%20Subdivision" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">for GAMES 101 Final Project</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Loop-Subdivision"><a href="#Loop-Subdivision" class="headerlink" title="Loop Subdivision"></a>Loop Subdivision</h1><p><strong>for GAMES 101 Final Project</strong><br><em>built on May 4th,2020</em></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png" alt="image-20200504133358963"  />
+
+<p>在作业中，我们实现了 displacement 贴图以改变对象的几何形状并添加令人 惊叹的表面细节。但是，为了捕获更加精细的细节，我们需要具有非常小且多的三 角形网格。为了解决这个问题，我们可以使用动态的细分方法。根据 displacement 贴图指定的信息，仅在需要时才将大的多边形细分。之后，将动态细分的网格发 送到图形管道中。在此项目中，你可以在 CPU 中把需要细分的三角形使用 Loop 细分，然后使用任何渲染方法将它显示出来，而不需要使用 GPU 编程。 </p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="Loop-Subdivision算法简述"><a href="#Loop-Subdivision算法简述" class="headerlink" title="Loop Subdivision算法简述"></a>Loop Subdivision算法简述</h3><p>Loop细分是一种三角网络的细分法则。算法主要就是把1个旧三角面片分成4个新三角面片，使用半边数据结构。具体：每次细分，每条边上计算插入一个新顶点，同时每个原始顶点更新位置。边界边/点和非边界边/点按不同策略插入/更新坐标。</p>
+<h3 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h3><p>每条边上新插入的点计算坐标后暂时存储在边结构的newPos变量中，每个旧顶点计算完更新后顶点位置后暂时存储在顶点结构的newPos变量中。</p>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135917192.png" alt="image-20200504135917192"></p>
+<p>更新策略如下图所示，图上为非边界情况的更新策略，图下为边界情况的更新策略。</p>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135936070.png" alt="image-20200504135936070"></p>
+<h3 id="三角面细分操作"><a href="#三角面细分操作" class="headerlink" title="三角面细分操作"></a>三角面细分操作</h3><p>采用如下策略进行三角面的划分：</p>
+<ul>
+<li>Split：对每一条旧边执行split操作，可按任意顺序执行。具体操作为：按照该边中存储的前一步已计算好的新顶点的坐标将该边断成两条边，并插入2条边连接新顶点与所处三角形的对角顶点（如果该边是边界，则新插入的边为1条）。</li>
+<li>Flip：对连接新旧顶点的新插入的边（新插入——不是由断裂原有边形成）进行flip操作。</li>
+</ul>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135950441.png" alt="image-20200504135950441"></p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><table>
+<thead>
+<tr>
+<th>系统</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作系统</td>
+<td>Windows Subsystem for Linux</td>
+</tr>
+<tr>
+<td>处理器</td>
+<td>Intel© Core™ i5-8250U CPU 1.60GHz 1.80GHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>8GB</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>GeForce MX150</td>
+</tr>
+<tr>
+<td>编译器</td>
+<td>gcc 7.5.0</td>
+</tr>
+<tr>
+<td>编译工具</td>
+<td>Cmake 3.10.2</td>
+</tr>
+</tbody></table>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./loop input.obj output.obj</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h3 id="bunny"><a href="#bunny" class="headerlink" title="bunny"></a>bunny</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133707642.png" alt="image-20200504133707642" style="zoom:50%;" />
+
+<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133834153.png" alt="image-20200504133834153" style="zoom:50%;" />
+
+<h3 id="teapot"><a href="#teapot" class="headerlink" title="teapot"></a>teapot</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134103022.png" alt="image-20200504134103022" style="zoom:50%;" />
+
+<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134227795.png" alt="image-20200504134227795" style="zoom:50%;" />
+
+<h2 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h2><p> <a href="http://39.97.182.211:10002/" target="_blank" rel="noopener">原理讲解</a></p>
+<p> <a href="http://39.97.182.211:10000/" target="_blank" rel="noopener">运行展示</a></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请BoJack喝杯咖啡</div>
+  <button onclick="document.getElementById('post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div id="post-reward">
+      
+      <div>
+        <img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/C1B6A89B427037B3B5DDB6A11C6E2621.JPG" alt="BoJack 微信">
+        <p>微信</p>
+      </div>
+      
+      <div>
+        <img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/547E695D9C78EF345CEDF39EB2A05632.JPG" alt="BoJack 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>BoJack
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/bojack.space/uncategorized/Loop%20Subdivision" title="Loop Subdivision for GAMES 101 Final Project">bojack.space/uncategorized/Loop Subdivision</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CG/" rel="tag"># CG</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/uncategorized/Hello%20World" rel="prev" title="Hello World！">
+      <i class="fa fa-chevron-left"></i> Hello World！
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/uncategorized/%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" rel="next" title="建模学习相关资料">
+      建模学习相关资料 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">BoJack</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/next-theme/pjax@0/pjax.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  if (hasTOC) {
+    document.querySelector('.sidebar-nav-toc').click();
+  } else {
+    document.querySelector('.sidebar-nav-overview').click();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    new Valine(Object.assign({
+      el  : '#valine-comments',
+      path: location.pathname,
+    }, {"enable":true,"appId":"6uMAH508bXao5UhHV0HP16nD-gzGzoHsz","appKey":"WFzi3WuNocMdKMI0EBAow3Qi","placeholder":"欢迎点评指正~","avatar":"mm","meta":["nick","mail"],"pageSize":10,"language":"zh-cn","visitor":true,"comment_count":true,"recordIP":false,"serverURLs":null}
+    ));
+  }, window.Valine);
+});
+</script>
+
+    </div>
+</body>
+</html>

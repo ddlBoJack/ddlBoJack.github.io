@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World！</title>
+    <url>/uncategorized/Hello%20World</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>CG</tag>
+        <tag>OI</tag>
+        <tag>noip</tag>
+        <tag>数学</tag>
+        <tag>概率统计</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Loop Subdivision for GAMES 101 Final Project</title>
+    <url>/uncategorized/Loop%20Subdivision</url>
+    <content><![CDATA[<h1 id="Loop-Subdivision"><a href="#Loop-Subdivision" class="headerlink" title="Loop Subdivision"></a>Loop Subdivision</h1><p><strong>for GAMES 101 Final Project</strong><br><em>built on May 4th,2020</em></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png" alt="image-20200504133358963"  />
+
+<p>在作业中，我们实现了 displacement 贴图以改变对象的几何形状并添加令人 惊叹的表面细节。但是，为了捕获更加精细的细节，我们需要具有非常小且多的三 角形网格。为了解决这个问题，我们可以使用动态的细分方法。根据 displacement 贴图指定的信息，仅在需要时才将大的多边形细分。之后，将动态细分的网格发 送到图形管道中。在此项目中，你可以在 CPU 中把需要细分的三角形使用 Loop 细分，然后使用任何渲染方法将它显示出来，而不需要使用 GPU 编程。 </p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="Loop-Subdivision算法简述"><a href="#Loop-Subdivision算法简述" class="headerlink" title="Loop Subdivision算法简述"></a>Loop Subdivision算法简述</h3><p>Loop细分是一种三角网络的细分法则。算法主要就是把1个旧三角面片分成4个新三角面片，使用半边数据结构。具体：每次细分，每条边上计算插入一个新顶点，同时每个原始顶点更新位置。边界边/点和非边界边/点按不同策略插入/更新坐标。</p>
+<h3 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h3><p>每条边上新插入的点计算坐标后暂时存储在边结构的newPos变量中，每个旧顶点计算完更新后顶点位置后暂时存储在顶点结构的newPos变量中。</p>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135917192.png" alt="image-20200504135917192"></p>
+<p>更新策略如下图所示，图上为非边界情况的更新策略，图下为边界情况的更新策略。</p>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135936070.png" alt="image-20200504135936070"></p>
+<h3 id="三角面细分操作"><a href="#三角面细分操作" class="headerlink" title="三角面细分操作"></a>三角面细分操作</h3><p>采用如下策略进行三角面的划分：</p>
+<ul>
+<li>Split：对每一条旧边执行split操作，可按任意顺序执行。具体操作为：按照该边中存储的前一步已计算好的新顶点的坐标将该边断成两条边，并插入2条边连接新顶点与所处三角形的对角顶点（如果该边是边界，则新插入的边为1条）。</li>
+<li>Flip：对连接新旧顶点的新插入的边（新插入——不是由断裂原有边形成）进行flip操作。</li>
+</ul>
+<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135950441.png" alt="image-20200504135950441"></p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><table>
+<thead>
+<tr>
+<th>系统</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>操作系统</td>
+<td>Windows Subsystem for Linux</td>
+</tr>
+<tr>
+<td>处理器</td>
+<td>Intel© Core™ i5-8250U CPU 1.60GHz 1.80GHz</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>8GB</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>GeForce MX150</td>
+</tr>
+<tr>
+<td>编译器</td>
+<td>gcc 7.5.0</td>
+</tr>
+<tr>
+<td>编译工具</td>
+<td>Cmake 3.10.2</td>
+</tr>
+</tbody></table>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./loop input.obj output.obj</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h3 id="bunny"><a href="#bunny" class="headerlink" title="bunny"></a>bunny</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133707642.png" alt="image-20200504133707642" style="zoom:50%;" />
+
+<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133834153.png" alt="image-20200504133834153" style="zoom:50%;" />
+
+<h3 id="teapot"><a href="#teapot" class="headerlink" title="teapot"></a>teapot</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134103022.png" alt="image-20200504134103022" style="zoom:50%;" />
+
+<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134227795.png" alt="image-20200504134227795" style="zoom:50%;" />
+
+<h2 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h2><p> <a href="http://39.97.182.211:10002/" target="_blank" rel="noopener">原理讲解</a></p>
+<p> <a href="http://39.97.182.211:10000/" target="_blank" rel="noopener">运行展示</a></p>
+]]></content>
+      <tags>
+        <tag>CG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>建模学习相关资料</title>
+    <url>/uncategorized/%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99</url>
+    <content><![CDATA[<h1 id="建模学习相关资料"><a href="#建模学习相关资料" class="headerlink" title="建模学习相关资料"></a>建模学习相关资料</h1><h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><p><a href="https://zhuanlan.zhihu.com/p/57896471" target="_blank" rel="noopener">对方差分析（ANOVA）的直观解释及计算</a></p>
+<h4 id="二项分布、泊松分布、正态分布"><a href="#二项分布、泊松分布、正态分布" class="headerlink" title="二项分布、泊松分布、正态分布"></a>二项分布、泊松分布、正态分布</h4><p>泊松分布和二项分布都是离散分布，离散分布的情况就是随机变量X 只取非负整数值，比如说抽10个产品坏品率0.2，使用二项分布；但是说1小时里接的电话数（假设期望np=λ=2），相当于n无限大（因为电话数是离散取值的），所以使用泊松分布。</p>
+<p>正态分布是所有分布趋于极限大样本的分布，属于连续分布。二项分布与泊松分布，则都是离散分布，<strong>二项分布的极限分布是泊松分布、泊松分布的极限分布是正态分布</strong>，即np=λ，当n很大时，可以近似相等。当n很大时（还没达到连续的程度），可以用泊松分布近似代替二项分布；当n再变大，几乎可以看成连续时，二项分布和泊松分布都可以用正态分布来代替！</p>
+<h2 id="博弈论"><a href="#博弈论" class="headerlink" title="博弈论"></a>博弈论</h2><p><a href="https://zhuanlan.zhihu.com/p/25781797" target="_blank" rel="noopener">通过几个例子理解博弈论与纳什均衡</a></p>
+<p>囚犯的困境、智猪博弈、范式博弈、饿狮博弈、硬币正反博弈</p>
+<h3 id="纳什均衡的分类："><a href="#纳什均衡的分类：" class="headerlink" title="纳什均衡的分类："></a>纳什均衡的分类：</h3><ol>
+<li><p>纯战略纳什均衡：也就是说玩家都能够采取固定的策略（比如一直出正面或者一直出反面），使得每人都赚得最多或亏得最少。</p>
+</li>
+<li><p>混合战略纳什均衡：是对每个纯战略分配一个机率而形成的战略。混合战略允许玩家随机选择一个纯战略。混合战略纳什均衡中要用概率计算，达到某一概率时，可以实现支付最优。因为概率是连续的，所以即使战略集合是有限的，也会有无限多个混合战略。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OI刷题记录</title>
+    <url>/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95</url>
+    <content><![CDATA[<h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
+<h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
+<p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
+<p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
+<p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
+<p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
+<p>一道dp，令dp[i]为以 1…i为节点组成的二叉搜索树种数，可以看成以1…i为根的二叉搜索树之和，其中root(j)=dp[j-1]*dp[i-j]，即左右子树二叉搜索树种数之积。</p>
+<h2 id="NOI"><a href="#NOI" class="headerlink" title="NOI"></a>NOI</h2><p><a href="http://noi.openjudge.cn/ch0206/1996/" target="_blank" rel="noopener">1996:登山</a></p>
+<p>一道动态规划，有点文字游戏，要考虑下山过程也会参观景点，复杂度$O(n^2)$</p>
+<p><a href="http://noi.openjudge.cn/ch0405/2454/" target="_blank" rel="noopener">2454:雷涛的小猫</a></p>
+<p>动态规划，分两种情况转移，一种是跳过来，一种直接下爬一格，复杂度$O(n^2)$。注意跳过来的数，即高度为h的最大值。</p>
+<p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
+<p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
+]]></content>
+      <tags>
+        <tag>OI</tag>
+      </tags>
+  </entry>
+</search>
