@@ -111,6 +111,8 @@
 <p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
 <p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
 <p>一道dp，令dp[i]为以 1…i为节点组成的二叉搜索树种数，可以看成以1…i为根的二叉搜索树之和，其中root(j)=dp[j-1]*dp[i-j]，即左右子树二叉搜索树种数之积。</p>
+<p><a href="https://leetcode-cn.com/problems/is-graph-bipartite/" target="_blank" rel="noopener">785. 判断二分图</a></p>
+<p>一道图论题，判断给定的无向图是不是二分图。使用染色法解决，相邻的顶点不能是同一种颜色即可。题目没说连通，要以所有点为起始点遍历整个图。</p>
 <h2 id="NOI"><a href="#NOI" class="headerlink" title="NOI"></a>NOI</h2><p><a href="http://noi.openjudge.cn/ch0206/1996/" target="_blank" rel="noopener">1996:登山</a></p>
 <p>一道动态规划，有点文字游戏，要考虑下山过程也会参观景点，复杂度$O(n^2)$</p>
 <p><a href="http://noi.openjudge.cn/ch0405/2454/" target="_blank" rel="noopener">2454:雷涛的小猫</a></p>
