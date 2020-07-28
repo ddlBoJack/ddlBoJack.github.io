@@ -107,6 +107,11 @@
     <content><![CDATA[<h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
 <h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
 <p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
+<p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
+<p>一个动规题，起初用BFS搜索TLE了，剪枝比较麻烦，就改成了动规，行列扫描一遍，$O(m*n)$时间即可解决。</p>
+<p>注意动态声明数组时需要初始化，但是不能用memset，使用方法如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> **rec=<span class="keyword">new</span> <span class="keyword">int</span>*[m]();<span class="comment">//加一个()即可初始化为0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)rec[i]=<span class="keyword">new</span> <span class="keyword">int</span>[n]();<span class="comment">//加一个()即可初始化为0</span></span><br></pre></td></tr></table></figure>
+
 <p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
 <p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
 <p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
