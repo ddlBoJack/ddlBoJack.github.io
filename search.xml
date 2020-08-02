@@ -107,6 +107,8 @@
     <content><![CDATA[<h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
 <h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
 <p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></p>
+<p>给定一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长的包含有效括号的子串的长度。两种做法，使用栈和动态规划，动规分两种情况：<br>$dp[i]=dp[i−2]+2$<br>$dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2$<br>那么，求$dp[i]dp[i]$就变成了求$dp[i - 1]dp[i−1]$、$ dp[i - 2]dp[i−2]$、$dp[i - dp[i - 1] - 2]dp[i−dp[i−1]−2]$的子问题。<br>代码中注意不要左端数组越界。</p>
 <p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
 <p>一个动规题，起初用BFS搜索TLE了，剪枝比较麻烦，就改成了动规，行列扫描一遍，$O(m*n)$时间即可解决。</p>
 <p>注意动态声明数组时需要初始化，但是不能用memset，使用方法如下：</p>
