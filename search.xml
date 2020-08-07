@@ -108,7 +108,9 @@
 <h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
 <p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
 <p><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></p>
-<p>给定一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长的包含有效括号的子串的长度。两种做法，使用栈和动态规划，动规分两种情况：<br>$dp[i]=dp[i−2]+2$<br>$dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2$<br>那么，求$dp[i]dp[i]$就变成了求$dp[i - 1]dp[i−1]$、$ dp[i - 2]dp[i−2]$、$dp[i - dp[i - 1] - 2]dp[i−dp[i−1]−2]$的子问题。<br>代码中注意不要左端数组越界。</p>
+<p>给定一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长的包含有效括号的子串的长度。两种做法，使用栈和动态规划。</p>
+<p>动规分两种情况：<br>$dp[i]=dp[i−2]+2$<br>$dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2$<br>那么，求$dp[i]dp[i]$就变成了求$dp[i - 1]dp[i−1]$、$ dp[i - 2]dp[i−2]$、$dp[i - dp[i - 1] - 2]dp[i−dp[i−1]−2]$的子问题。<br>代码中注意不要左端数组越界。</p>
+<p>使用栈思路很简单，初始化一串0，能匹配的括号标成1，扫一遍记录最长的1的数量即可。</p>
 <p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
 <p>一个动规题，起初用BFS搜索TLE了，剪枝比较麻烦，就改成了动规，行列扫描一遍，$O(m*n)$时间即可解决。</p>
 <p>注意动态声明数组时需要初始化，但是不能用memset，使用方法如下：</p>
@@ -128,6 +130,8 @@
 <p>动态规划，分两种情况转移，一种是跳过来，一种直接下爬一格，复杂度$O(n^2)$。注意跳过来的数，即高度为h的最大值。</p>
 <p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
 <p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
+<p><a href="http://noi.openjudge.cn/ch0407/7591/" target="_blank" rel="noopener">7591:反质数</a></p>
+<p>经典数论+搜索的题目，暴力穷举打表需要跑一个多小时，很慢。<br>搜索做法是将1–20000000分解为10多个质数的乘积，其中每个质数可以出现多次<br>从1–2–4–8–$2^n$–$2^{n-1}<em>3$ DFS搜索，但要保证每个数字只搜索一遍才能O(n)，方法是每个数只搜索比他大的数<br>比如3\</em>3*3可以，3*2不行因为2*3已经搜过<br>在一个20000000的数组中标记每个数的质因子个数，打表后维护一个max，从而找到真正的反质数。</p>
 ]]></content>
       <tags>
         <tag>OI</tag>
