@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg">
 <meta property="article:published_time" content="2020-07-15T06:20:56.000Z">
-<meta property="article:modified_time" content="2020-08-08T01:22:33.628Z">
+<meta property="article:modified_time" content="2020-08-08T01:25:16.640Z">
 <meta property="article:author" content="BoJack">
 <meta property="article:tag" content="OI">
 <meta name="twitter:card" content="summary">
@@ -314,7 +314,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-08 09:22:33" itemprop="dateModified" datetime="2020-08-08T09:22:33+08:00">2020-08-08</time>
+                <time title="修改时间：2020-08-08 09:25:16" itemprop="dateModified" datetime="2020-08-08T09:25:16+08:00">2020-08-08</time>
               </span>
 
           
@@ -377,7 +377,7 @@
 <p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
 <p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
 <p><a href="http://noi.openjudge.cn/ch0407/7591/" target="_blank" rel="noopener">7591:反质数</a></p>
-<p>经典数论+搜索的题目，暴力穷举打表需要跑一个多小时，很慢。<br>搜索做法是将1–20000000分解为10多个质数的乘积，其中每个质数可以出现多次<br>从1–2–4–8–$2^n$– $2^{n-1}<em>3$  DFS搜索，但要保证每个数字只搜索一遍才能O(n)，方法是每个数只搜索比他大的数<br>比如3 \</em> 3 * 3可以，3*2不行因为2*3已经搜过<br>在一个20000000的数组中标记每个数的质因子个数，打表后维护一个max，从而找到真正的反质数。</p>
+<p>经典数论+搜索的题目，暴力穷举打表需要跑一个多小时，很慢。<br>搜索做法是将1–20000000分解为10多个质数的乘积，其中每个质数可以出现多次<br>从1–2–4–8–$2^n$–$2^{n-1}<em>3$DFS搜索，但要保证每个数字只搜索一遍才能O(n)，方法是每个数只搜索比他大的数<br>比如3\</em>3<em>3可以，3\</em>2不行因为2*3已经搜过<br>在一个20000000的数组中标记每个数的质因子个数，打表后维护一个max，从而找到真正的反质数。</p>
 
     </div>
 
