@@ -221,21 +221,21 @@
     <img class="site-author-image" itemprop="image" alt="BoJack"
       src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
   <p class="site-author-name" itemprop="name">BoJack</p>
-  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正</div>
+  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>求知若渴，欢迎点评指正</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -289,7 +289,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
       <meta itemprop="name" content="BoJack">
-      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正">
+      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>求知若渴，欢迎点评指正">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -439,8 +439,8 @@
       <i class="fa fa-chevron-left"></i> 建模学习相关资料
     </a></div>
       <div class="post-nav-item">
-    <a href="/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3" rel="next" title="Confirming the Buzz about Hornets——2021美赛C题思路及题解">
-      Confirming the Buzz about Hornets——2021美赛C题思路及题解 <i class="fa fa-chevron-right"></i>
+    <a href="/uncategorized/%E3%80%90Raspberry%20Pi%E3%80%91%E4%BD%BF%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E5%88%B7OpenWrt%E6%89%93%E9%80%A0%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%99%A8" rel="next" title="使用树莓派3B+刷OpenWrt打造主路由">
+      使用树莓派3B+刷OpenWrt打造主路由 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

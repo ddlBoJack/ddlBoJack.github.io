@@ -22,29 +22,23 @@
     var CONFIG = {"hostname":"bojack.tech","root":"/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="for GAMES 101 Final Project">
+  <meta name="description" content="今日宜：思考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Loop Subdivision for GAMES 101 Final Project">
-<meta property="og:url" content="bojack.tech/uncategorized/Loop%20Subdivision">
+<meta property="og:title" content="如何在实验室混下去之：安全关闭显卡幽灵进程">
+<meta property="og:url" content="bojack.tech/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B">
 <meta property="og:site_name" content="憨憨coding">
-<meta property="og:description" content="for GAMES 101 Final Project">
+<meta property="og:description" content="今日宜：思考">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135917192.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135936070.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135950441.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133707642.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133834153.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134103022.png">
-<meta property="og:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134227795.png">
-<meta property="article:published_time" content="2020-07-06T15:59:37.000Z">
-<meta property="article:modified_time" content="2020-12-22T09:14:49.721Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021032713092570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327131248588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-03-27T05:18:34.000Z">
+<meta property="article:modified_time" content="2021-05-05T10:03:25.665Z">
 <meta property="article:author" content="BoJack">
-<meta property="article:tag" content="CG">
+<meta property="article:tag" content="BUG">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021032713092570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70">
 
-<link rel="canonical" href="bojack.tech/uncategorized/Loop%20Subdivision">
+<link rel="canonical" href="bojack.tech/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B">
 
 
 <script data-pjax class="page-configurations">
@@ -57,7 +51,7 @@
   };
 </script>
 
-  <title>Loop Subdivision for GAMES 101 Final Project | 憨憨coding</title>
+  <title>如何在实验室混下去之：安全关闭显卡幽灵进程 | 憨憨coding</title>
   
 
 
@@ -207,7 +201,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -219,7 +213,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Loop-Subdivision"><span class="nav-number">1.</span> <span class="nav-text">Loop Subdivision</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现原理"><span class="nav-number">1.2.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loop-Subdivision算法简述"><span class="nav-number">1.2.1.</span> <span class="nav-text">Loop Subdivision算法简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新策略"><span class="nav-number">1.2.2.</span> <span class="nav-text">更新策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三角面细分操作"><span class="nav-number">1.2.3.</span> <span class="nav-text">三角面细分操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.3.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译"><span class="nav-number">1.4.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">1.5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">1.6.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bunny"><span class="nav-number">1.6.1.</span> <span class="nav-text">bunny</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#teapot"><span class="nav-number">1.6.2.</span> <span class="nav-text">teapot</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频展示"><span class="nav-number">1.7.</span> <span class="nav-text">视频展示</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -291,7 +284,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="bojack.tech/uncategorized/Loop%20Subdivision">
+    <link itemprop="mainEntityOfPage" href="bojack.tech/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
@@ -304,7 +297,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Loop Subdivision for GAMES 101 Final Project
+          如何在实验室混下去之：安全关闭显卡幽灵进程
         </h1>
 
         <div class="post-meta">
@@ -314,18 +307,18 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-06 23:59:37" itemprop="dateCreated datePublished" datetime="2020-07-06T23:59:37+08:00">2020-07-06</time>
+              <time title="创建时间：2021-03-27 13:18:34" itemprop="dateCreated datePublished" datetime="2021-03-27T13:18:34+08:00">2021-03-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-22 17:14:49" itemprop="dateModified" datetime="2020-12-22T17:14:49+08:00">2020-12-22</time>
+                <time title="修改时间：2021-05-05 18:03:25" itemprop="dateModified" datetime="2021-05-05T18:03:25+08:00">2021-05-05</time>
               </span>
 
           
-            <span id="/uncategorized/Loop%20Subdivision" class="post-meta-item leancloud_visitors" data-flag-title="Loop Subdivision for GAMES 101 Final Project" title="阅读次数">
+            <span id="/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B" class="post-meta-item leancloud_visitors" data-flag-title="如何在实验室混下去之：安全关闭显卡幽灵进程" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -340,13 +333,13 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/uncategorized/Loop%20Subdivision#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/Loop%20Subdivision" itemprop="commentCount"></span>
+    <a title="valine" href="/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">for GAMES 101 Final Project</div>
+            <div class="post-description">今日宜：思考</div>
 
         </div>
       </header>
@@ -357,67 +350,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Loop-Subdivision"><a href="#Loop-Subdivision" class="headerlink" title="Loop Subdivision"></a>Loop Subdivision</h1><p><strong>for GAMES 101 Final Project</strong><br><em>built on May 4th,2020</em></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133358963.png" alt="image-20200504133358963"  />
-
-<p>在作业中，我们实现了 displacement 贴图以改变对象的几何形状并添加令人 惊叹的表面细节。但是，为了捕获更加精细的细节，我们需要具有非常小且多的三 角形网格。为了解决这个问题，我们可以使用动态的细分方法。根据 displacement 贴图指定的信息，仅在需要时才将大的多边形细分。之后，将动态细分的网格发 送到图形管道中。在此项目中，你可以在 CPU 中把需要细分的三角形使用 Loop 细分，然后使用任何渲染方法将它显示出来，而不需要使用 GPU 编程。 </p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="Loop-Subdivision算法简述"><a href="#Loop-Subdivision算法简述" class="headerlink" title="Loop Subdivision算法简述"></a>Loop Subdivision算法简述</h3><p>Loop细分是一种三角网络的细分法则。算法主要就是把1个旧三角面片分成4个新三角面片，使用半边数据结构。具体：每次细分，每条边上计算插入一个新顶点，同时每个原始顶点更新位置。边界边/点和非边界边/点按不同策略插入/更新坐标。</p>
-<h3 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h3><p>每条边上新插入的点计算坐标后暂时存储在边结构的newPos变量中，每个旧顶点计算完更新后顶点位置后暂时存储在顶点结构的newPos变量中。</p>
-<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135917192.png" alt="image-20200504135917192"></p>
-<p>更新策略如下图所示，图上为非边界情况的更新策略，图下为边界情况的更新策略。</p>
-<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135936070.png" alt="image-20200504135936070"></p>
-<h3 id="三角面细分操作"><a href="#三角面细分操作" class="headerlink" title="三角面细分操作"></a>三角面细分操作</h3><p>采用如下策略进行三角面的划分：</p>
-<ul>
-<li>Split：对每一条旧边执行split操作，可按任意顺序执行。具体操作为：按照该边中存储的前一步已计算好的新顶点的坐标将该边断成两条边，并插入2条边连接新顶点与所处三角形的对角顶点（如果该边是边界，则新插入的边为1条）。</li>
-<li>Flip：对连接新旧顶点的新插入的边（新插入——不是由断裂原有边形成）进行flip操作。</li>
-</ul>
-<p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504135950441.png" alt="image-20200504135950441"></p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><table>
-<thead>
-<tr>
-<th>系统</th>
-<th>信息</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>操作系统</td>
-<td>Windows Subsystem for Linux</td>
-</tr>
-<tr>
-<td>处理器</td>
-<td>Intel© Core™ i5-8250U CPU 1.60GHz 1.80GHz</td>
-</tr>
-<tr>
-<td>内存</td>
-<td>8GB</td>
-</tr>
-<tr>
-<td>显卡</td>
-<td>GeForce MX150</td>
-</tr>
-<tr>
-<td>编译器</td>
-<td>gcc 7.5.0</td>
-</tr>
-<tr>
-<td>编译工具</td>
-<td>Cmake 3.10.2</td>
-</tr>
-</tbody></table>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./loop input.obj output.obj</span><br></pre></td></tr></table></figure>
-
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><h3 id="bunny"><a href="#bunny" class="headerlink" title="bunny"></a>bunny</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133707642.png" alt="image-20200504133707642" style="zoom:50%;" />
-
-<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504133834153.png" alt="image-20200504133834153" style="zoom:50%;" />
-
-<h3 id="teapot"><a href="#teapot" class="headerlink" title="teapot"></a>teapot</h3><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134103022.png" alt="image-20200504134103022" style="zoom:50%;" />
-
-<img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/image-20200504134227795.png" alt="image-20200504134227795" style="zoom:50%;" />
-
-<h2 id="视频展示"><a href="#视频展示" class="headerlink" title="视频展示"></a>视频展示</h2><p> <a href="http://101.200.131.139:10002/" target="_blank" rel="noopener">原理讲解</a></p>
-<p> <a href="http://101.200.131.139:10000/" target="_blank" rel="noopener">运行展示</a></p>
+        <p>最近遇到了一个烦心事，我后台跑了一个搜索超参数的文件（占用大内存和大显存），但是发现程序有误，企图断掉，使用<code>kill -9 + 进程号</code>之后terminal告诉我已杀死，但是在显存上仍然占用。如图：<br><img src="https://img-blog.csdnimg.cn/2021032713092570.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>总不能一直跑下去吧，如果被错认为占卡，容易被实验室的人打死。神奇的是，<code>jobs</code>命令、<code>htop</code>命令、<code>ps aux|grep</code>命令都找不到进程。由于喜欢高亮显示，并且想看到每个进程都是谁在跑，所以我查看显存一直使用<code>gpustat</code>命令（上面这张图），很少使用<code>watch -n 1 nvidia-smi</code>命令。于是我尝试着使用<code>nvidia-smi</code>，果然是一个不同的进程号，如图：<br><img src="https://img-blog.csdnimg.cn/20210327131248588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后运行<code>kill -9 80465</code> 即可。</p>
+<p>p.s.我依然知道为什么这个进程通过<code>htop</code>命令、<code>ps aux|grep</code>命令都找不到。</p>
 
     </div>
 
@@ -453,7 +387,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="/bojack.tech/uncategorized/Loop%20Subdivision" title="Loop Subdivision for GAMES 101 Final Project">bojack.tech/uncategorized/Loop Subdivision</a>
+    <a href="/bojack.tech/uncategorized/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%B7%B7%E4%B8%8B%E5%8E%BB%E4%B9%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E5%85%B3%E9%97%AD%E6%98%BE%E5%8D%A1%E5%B9%BD%E7%81%B5%E8%BF%9B%E7%A8%8B" title="如何在实验室混下去之：安全关闭显卡幽灵进程">bojack.tech/uncategorized/如何在实验室混下去之：安全关闭显卡幽灵进程</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -464,7 +398,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CG/" rel="tag"># CG</a>
+              <a href="/tags/BUG/" rel="tag"># BUG</a>
           </div>
 
         
@@ -473,13 +407,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/uncategorized/Hello%20World" rel="prev" title="Hello World！">
-      <i class="fa fa-chevron-left"></i> Hello World！
+    <a href="/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3" rel="prev" title="Confirming the Buzz about Hornets——2021美赛C题思路及题解">
+      <i class="fa fa-chevron-left"></i> Confirming the Buzz about Hornets——2021美赛C题思路及题解
     </a></div>
-      <div class="post-nav-item">
-    <a href="/uncategorized/%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" rel="next" title="建模学习相关资料">
-      建模学习相关资料 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -624,6 +555,59 @@ document.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

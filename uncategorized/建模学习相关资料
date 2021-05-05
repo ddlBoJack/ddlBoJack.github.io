@@ -219,21 +219,21 @@
     <img class="site-author-image" itemprop="image" alt="BoJack"
       src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
   <p class="site-author-name" itemprop="name">BoJack</p>
-  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正</div>
+  <div class="site-description" itemprop="description">SDU本科生在读<br>半路出家，能动转AI<br>求知若渴，欢迎点评指正</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -287,7 +287,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/葫芦娃.jpg">
       <meta itemprop="name" content="BoJack">
-      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>什么都懂一点，什么都不精<br>求知若渴，欢迎点评指正">
+      <meta itemprop="description" content="SDU本科生在读<br>半路出家，能动转AI<br>求知若渴，欢迎点评指正">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
