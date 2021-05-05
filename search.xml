@@ -15,64 +15,61 @@
       </tags>
   </entry>
   <entry>
-    <title>OI刷题记录</title>
-    <url>/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95</url>
-    <content><![CDATA[<h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
-<h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
-<p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
-<p><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></p>
-<p>给定一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长的包含有效括号的子串的长度。两种做法，使用栈和动态规划。</p>
-<p>动规分两种情况：<br>$dp[i]=dp[i−2]+2$<br>$dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2$<br>那么，求$dp[i]dp[i]$就变成了求$dp[i - 1]dp[i−1]$、$ dp[i - 2]dp[i−2]$、$dp[i - dp[i - 1] - 2]dp[i−dp[i−1]−2]$的子问题。<br>代码中注意不要左端数组越界。</p>
-<p>使用栈思路很简单，初始化一串0，能匹配的括号标成1，扫一遍记录最长的1的数量即可。</p>
-<p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
-<p>一个动规题，起初用BFS搜索TLE了，剪枝比较麻烦，就改成了动规，行列扫描一遍，$O(m*n)$时间即可解决。</p>
-<p>注意动态声明数组时需要初始化，但是不能用memset，使用方法如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> **rec=<span class="keyword">new</span> <span class="keyword">int</span>*[m]();<span class="comment">//加一个()即可初始化为0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)rec[i]=<span class="keyword">new</span> <span class="keyword">int</span>[n]();<span class="comment">//加一个()即可初始化为0</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://leetcode-cn.com/problems/unique-paths-ii/" target="_blank" rel="noopener">63. 不同路径 II</a></p>
-<p>是62的加强版，同样要初始化第一行和第一列，一旦有一个挡住了，后面的全是0，因为第一行和第一列只能从左边或上边延续下来。其他的地方判断有没有障碍，有就置零，没有就左和上相加即可。</p>
-<p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
-<p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
-<p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
-<p>一道dp，令dp[i]为以 1…i为节点组成的二叉搜索树种数，可以看成以1…i为根的二叉搜索树之和，其中root(j)=dp[j-1]*dp[i-j]，即左右子树二叉搜索树种数之积。</p>
-<p><a href="https://leetcode-cn.com/problems/is-graph-bipartite/" target="_blank" rel="noopener">785. 判断二分图</a></p>
-<p>一道图论题，判断给定的无向图是不是二分图。使用染色法解决，相邻的顶点不能是同一种颜色即可。题目没说连通，要以所有点为起始点遍历整个图。</p>
-<h2 id="NOI"><a href="#NOI" class="headerlink" title="NOI"></a>NOI</h2><p><a href="http://noi.openjudge.cn/ch0206/1996/" target="_blank" rel="noopener">1996:登山</a></p>
-<p>一道动态规划，有点文字游戏，要考虑下山过程也会参观景点，复杂度$O(n^2)$</p>
-<p><a href="http://noi.openjudge.cn/ch0405/2454/" target="_blank" rel="noopener">2454:雷涛的小猫</a></p>
-<p>动态规划，分两种情况转移，一种是跳过来，一种直接下爬一格，复杂度$O(n^2)$。注意跳过来的数，即高度为h的最大值。</p>
-<p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
-<p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
-<p><a href="http://noi.openjudge.cn/ch0407/7591/" target="_blank" rel="noopener">7591:反质数</a></p>
-<p>经典数论+搜索的题目，暴力穷举打表需要跑一个多小时，很慢。<br>搜索做法是将1–20000000分解为10多个质数的乘积，其中每个质数可以出现多次<br>从1–2–4–8–$2^n$–$2^{n-1}$*3​DFS搜索，但要保证每个数字只搜索一遍才能O(n)，方法是每个数只搜索比他大的数<br>比如3✖️3✖️3可以，3*2不行因为2*3已经搜过<br>在一个20000000的数组中标记每个数的质因子个数，打表后维护一个max，从而找到真正的反质数。</p>
-<p><a href="http://noi.openjudge.cn/ch0407/1819/" target="_blank" rel="noopener">1819:木棒</a></p>
-<p>给定短木棒数量和长度，求能拼成的长木棒的最短长度。解决方法是求和然后从n到1枚举木棒数量，即可从小到大枚举原木棒长度。对于每个可能的长度进行DFS搜索，DFS两个参数为要拼的木棒长度和剩余短木棒数量。但要注意剪枝：<br>如果对于一个新的原木棒，最长的短木棒用不了，则这根最长的短木棒永远用不了；<br>只拟合前几根棒子，早停剪枝（比如原长为6，拟合完前面的剩余短木棒长度为4 5 4 5 4 5……）。</p>
-]]></content>
-      <tags>
-        <tag>OI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用树莓派3B+刷OpenWrt打造主路由</title>
-    <url>/uncategorized/%E3%80%90Raspberry%20Pi%E3%80%91%E4%BD%BF%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E5%88%B7OpenWrt%E6%89%93%E9%80%A0%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%99%A8</url>
-    <content><![CDATA[<h1 id="背景情况"><a href="#背景情况" class="headerlink" title="背景情况"></a>背景情况</h1><p>装了小区宽带，虽然是光纤入户，但只有100兆（谁让他便宜呢，平时父母用对带宽需求不是很高）。家里还有一个老TP-Link路由器，速度极为拉胯，实测只有20兆左右。正好我带回来一个树莓派3B+，在网上查阅他是通过USB 2.0的千兆网卡，这样的话上限可以有500兆左右带宽，做个软路由绰绰有余。在网上查阅发现大家大都使用树莓派刷OpenWrt打造旁路路由（也就是插在路由器上的路由器），而我却需要主路由，直接连在光猫上给全家使用。经过一晚上的折腾终于搞定了，再此感谢帮助我的qhy学长，学长计算机网络技术是真的牛！</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p>树莓派3B+及其电源，一张SD卡（以及读卡器），一根网线。</p>
-<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h2><p>首先我们要把OpenWrt刷入SD卡。推荐下载最新版OpenWrt，官网会比较慢，使用清华大学镜像基本可以秒下。在<a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.6/targets/brcm2708/bcm2709/" target="_blank" rel="noopener">传送门</a>里点击openwrt-19.07.6-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz，如果怕断电就下squashfs那个，openwrt-19.07.6-brcm2708-bcm2709-rpi-2-squashfs-factory.img.gz。<br><img src="https://img-blog.csdnimg.cn/20210127225929363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下载后解压即可，会有一个.img的文件。下面按顺序操作：</p>
+    <title>Confirming the Buzz about Hornets——2021美赛C题思路及题解</title>
+    <url>/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2021年的美赛结束了，我们选择了大数据相关的C题。看网上对C题的讨论不多，这里我对该题做一下分析并给出我们的解决方案，有什么意见或建议欢迎与我探讨。</p>
+<p>个人认为，这是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。所以我们要思考怎样合理运用每个报告的图片、文本、位置、时间信息，对报告做一个分类，或者对所有报告风险程度做一个排序。</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="题目描述（翻译版，重点内容加粗）"><a href="#题目描述（翻译版，重点内容加粗）" class="headerlink" title="题目描述（翻译版，重点内容加粗）"></a>题目描述（翻译版，重点内容加粗）</h2><p>Problem C: Confirming the Buzz about Hornets<br>问题C：确认关于黄蜂的传言</p>
+<p>2019年9月，在加拿大不列颠哥伦比亚省的温哥华岛上发现了胡蜂（Vespa mandarinia，又称亚洲大黄蜂）的殖民地。鸟巢很快被摧毁，但这一事件的消息迅速传遍了整个地区。从那时起，在邻近的华盛顿州发生了几次确认的害虫目击事件，以及大量的错误目击事件。下面的图1显示了探测、大黄蜂手表和公众目击的地图。<br><img src="https://img-blog.csdnimg.cn/20210211103345716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>胡蜂（Vespa mandarinia）是世界上最大的黄蜂种类，其巢的出现令人震惊。此外，大黄蜂是欧洲蜜蜂的掠食者，入侵并破坏它们的巢穴。少量的黄蜂能够在短时间内摧毁整个欧洲蜜蜂群落。同时，它们是被认为是农业害虫的其他昆虫的贪婪的掠食者。</p>
+<p>大黄蜂的生命周期与其他许多黄蜂相似。受精后在春天出现，并开始一个新的群体。秋天，新蜂王离开巢，在土里过冬，等待春天的到来。<strong>一只新蜂王的筑巢距离估计为30公里</strong>。有关亚洲黄蜂的更多详细信息，请参见问题附件，也可以在网上找到。</p>
+<p>由于胡蜂对当地蜜蜂种群的潜在严重影响，胡蜂的存在会引起很大的焦虑。华盛顿州已经建立了帮助热线和一个网站，供人们报告这些黄蜂的目击情况。根据这些来自公众的报告，国家必须决定如何将其有限的资源优先用于后续补充调查。虽然一些报告已被确定为胡蜂，许多其他目击已证明是其他类型的昆虫。</p>
+<p><strong>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</strong></p>
+<p>你的论文应该探讨和解决以下几个方面：</p>
+<ul>
+<li>解决并讨论是否可以预测这种有害生物随时间的传播，以及准确度如何。</li>
+<li>大多数报道的目击都把其他黄蜂误认为是胡蜂。仅使用提供的数据集文件和（可能）提供的图像文件来创建、分析和讨论预测错误分类可能性的模型。</li>
+<li>利用你的模型讨论你的分类分析<strong>如何优先调查</strong>最有可能是正面目击的报告。</li>
+<li>说明随着时间的推移，如果有其他新报告，如何更新模型，以及更新的频率。</li>
+<li>利用你的模型，有什么证据可以证明华盛顿州已经消灭了这种有害生物？</li>
+</ul>
+<p>最后，你的报告应该包括一份两页的备忘录，总结你在华盛顿州农业部的调查结果。</p>
+<h2 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h2><p><strong>针对这个问题，我们提供了以下四种材料。提供的数据文件包含此问题应使用的唯一数据。</strong></p>
+<p><em>2021MCM_ProblemC_Vespamandarinia.pdf</em><br>来自宾夕法尼亚州立大学的背景资料描述了这种昆虫。</p>
+<p><em>2021MCM_ProblemC_DataSet.xlsx</em><br>包含4440份目击报告的电子表格，包含以下字段：<br><strong>GlobalID</strong>：每个目击记录的唯一标签。<br><strong>Detection Date</strong>：报告的发现日期。<br><strong>Notes</strong>: 提交报告的人提供的评论。这可以是一名公众成员，偶尔也可以是一名国家雇员。<br><strong>Lab Status</strong>：美国国务院对目击事件的官方分类。经过分析，身份证阳性意味着这是一只亚洲大黄蜂。否定的ID意味着它被排除在外。未处理意味着它还没有被分类。未核实意味着由于缺乏信息而没有作出决定。<br><strong>Lab Comments</strong>：国家昆虫学实验室分析后添加到记录中的内容。<br><strong>Submission Date</strong>：向国家提交报告的日期。这个日期可以是在检测日期之后。<br><strong>Latitude</strong>：维度，这些数据是由国家在转换报告提供的地址后提供的。<br><strong>Longitude</strong>：经度，这些数据是由国家在转换报告提供的地址后提供的。</p>
+<p><em>2021MCM_Probem_C_Files.rar</em><br>有3305张目击报告中的图片。</p>
+<p><em>2021MCM_Problem_C_Images_by_GlobalID.xlsx</em><br>将图像映射到具有以下字段的目击的电子表格:<br><strong>Filename</strong>:rar文件夹中图像的名称<br><strong>Globalld</strong>:每个目击记录的唯一标签。这在两个电子表格中是一致的。<br><strong>Filetype</strong>:文件类型</p>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>看知乎上@数学不止一点难 说得很实在：</p>
+<blockquote>
+<p>红色的表示positive的，我们可以看到，基本上没啥positive的案例，百分之零点零几的准确率吧，所以工作人员很烦这些没事找事的人，但是上头布置下来的任务又必须得完成，那咋办呢，就希望你能给出一种自动识别的办法，即根据目击者的经纬度，提供的数据(图片视频文件啥的)以及口头描述(Notes)，来确定他上报的这个是不是真的。<br> 同时呢，为了让他们在报告的时候向上司装B，工作人员希望你的模型具有统计学意义，这意味着你的模型里面要做各种假设以及各种统计学检验。</p>
+</blockquote>
+<p>也就是说，这玩意像新冠病毒，数量少，但是检测的多，所以我们的模型<strong>召回率</strong>（不懂的可以自行百度）要高，对准确率要求相对没有那么严格。召回率咋提高？降低评判标准呗，有点像就认为可能是大黄蜂，宁可错杀不能放过。</p>
+<p>接下来我们分析一下题目。有两个细节希望大家注意：</p>
 <ol>
-<li>将SD卡插入读卡器或拓展坞连入电脑，输入<code>diskutil list</code>命令。一般来说最后一个显示(internal, physical)的就是你的SD卡，我们这里假设是/dev/disk2。<br><img src="https://img-blog.csdnimg.cn/20210127231331274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>然后取消挂载sd卡：<code>diskutil umountDisk disk4</code>，注意下一步dd操作之前必须umount。</li>
-<li>然后输入 <code>sudo dd if=/Users/bojack/Downloads/openwrt-19.07.6-brcm2708-bcm2709-rpi-2-squashfs-factory.img of=/dev/disk2 bs=1m</code>，出现如下信息表示成功。其中if后面加入写入文件路径，of加入挂在磁盘位置，bs=bytes，即同时设置读入/输出的块大小为bytes个字节。<br><img src="https://img-blog.csdnimg.cn/20210127231805504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
-<li>输入<code>sync</code>命令，然后才能拔出SD卡。平时umount的时候会自动sync，但是现在是dd，没挂载就得手动sync。</li>
+<li>我们从大题目（Confirming the Buzz about Hornets——确认关于黄蜂的传言）看出，buzz一语双关，表面看是嗡嗡声的意思，其实后面用了about是为了双关传言的语义（不然就用the Buzz of Hornets了）。</li>
+<li>此外在给出五个问题之前，题目重点强调了：<blockquote>
+<p>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</p>
+</blockquote>
+</li>
 </ol>
-<p>这样我们的前期准备就完成了。</p>
-<h1 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h1><p>将SD卡插入树莓派，树莓派使用网线连接电脑（注意官方版本就应该这么做），然后开机。一定要先插网线后把树莓派开机。然后在浏览器输入<a href="http://192.168.1.1/" target="_blank" rel="noopener">http://192.168.1.1/</a>   进入OpenWrt管理页面。这时候可以随便设置个密码，否则Google Chrome会一直给你说不安全。</p>
-<h2 id="配置无线网"><a href="#配置无线网" class="headerlink" title="配置无线网"></a>配置无线网</h2><p>由于树莓派3B+只有一个网口，要留给光猫接入，所以要先配置无线网。在最上面点击Network–Wireless，如图：<br><img src="https://img-blog.csdnimg.cn/20210127232716745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后在SSID: OpenWrt的右边点击Edit，进入管理无线网页面。然后在下面ESSID处写你的WIFI名，以后就用这个名字登陆WIFI，如图：<br><img src="https://img-blog.csdnimg.cn/20210127232938795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再点击Wireless Security，依次选择下图中的选项（这样是最安全的设置），然后在Key处设置密码：<br><img src="https://img-blog.csdnimg.cn/20210127233102774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Save，然后Save&amp;Apply，等待一会然后断掉网线。这时候使用电脑WIFI连接树莓派，使用刚才设置的账号密码即可。重新登陆<a href="http://192.168.1.1/" target="_blank" rel="noopener">http://192.168.1.1/</a> 即可。</p>
-<h2 id="配置WAN和LAN"><a href="#配置WAN和LAN" class="headerlink" title="配置WAN和LAN"></a>配置WAN和LAN</h2><p>由于我们要把树莓派作为主路由，所以要配置wan口。点击Network–Interfaces处，如图：<br><img src="https://img-blog.csdnimg.cn/20210127233442226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后点击Add new interface…，依次设置名称wan；协议PPPoE；包括以下接口选eth0：<br><img src="https://img-blog.csdnimg.cn/20210127233749408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这样wan口就设置好了。然后退回Interfaces页面，修改 br-lan，进入物理设置，去掉eth0，Save&amp;Apply：<br><img src="https://img-blog.csdnimg.cn/20210127233955923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>最后修改WAN，把pppoe的用户密码写上，也就是ISP的账号密码（办理宽带时候给的账号密码）：<br><img src="https://img-blog.csdnimg.cn/2021012723412171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>此时将树莓派用网线连接光猫，就能用了。如果还是不行，检查wan的防火墙是否选择了wan：<br><img src="https://img-blog.csdnimg.cn/20210127234300360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="速度测速"><a href="#速度测速" class="headerlink" title="速度测速"></a>速度测速</h1><p><img src="https://img-blog.csdnimg.cn/20210127234519490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下行速度没什么问题，上行有些低，也不知道是因为什么（怀疑是宽带问题），不过基本够用。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://vantageso.com/raspberry-openwrt-lu-you-qi/" target="_blank" rel="noopener">2020 | 树莓派刷openwrt打造旁路由器全攻略</a><br><a href="https://www.lxx1.com/4709" target="_blank" rel="noopener">树莓派3B+刷Openwrt，打造全能路由器</a><br><a href="https://www.lxx1.com/4711" target="_blank" rel="noopener">Linux下制作树莓派系统盘</a><br><a href="https://blog.csdn.net/zhangkaiadl/article/details/104690088" target="_blank" rel="noopener">树莓派安装OpenWrt</a></p>
+<p>综合上面两点，再去读五个问题，可以看出出题人重点要我们解决第二问（分析某个报告是不是AGH）和第三问（给不同报告一个调度资源的优先级）。因而第一问的传播情况是一个引子，想让我们熟悉一下问题的数据以及背景情况；第四问（模型更新）和第五问（何时灭绝）就是结合实际情况对我们模型的阐述以及一些理（语）论（文）分（建）析（模）。所以我这里重点分析一下二三问的模型如何建立，想获得详细论文及代码可以私信我。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="数据清洗与分析"><a href="#数据清洗与分析" class="headerlink" title="数据清洗与分析"></a>数据清洗与分析</h2><p>根据新闻，2019年之前AGH并未入侵北美。同时我们观察报告也可以发现，2019年之前的报告大都是人们的回忆，是一些“莫须有”，所以我们清理了新闻之前的报告。然后按照有无Image、有无Notes、以及每种情况下面的四种Status进行数据可视化，如下：<br><img src="https://img-blog.csdnimg.cn/20210212225445586.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过观察可视化，我们可以得出以下结论：超过一半的样本没有图像，绝大多数unverified status的样本没有图片。因此，图像是判断样品是否为AGH的最重要因素。换句话说，这个标签是专家打的，没图的基本都不能确实，而有图的很少有不能确实的。</p>
+<p>其次看看文本，我们认为文本信息可能都判断报告是不是大黄蜂有意义。实际上。。。数据很脏，有句子有短语有单词有空值，情感分析什么的基本白扯，聚类估计也很离散，还是考虑一些传统方法勉强能打。</p>
+<p>我们再看看位置信息：<br><img src="https://img-blog.csdnimg.cn/20210212230100188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>报告是向着“疫情点”四周扩散的，所以位置因素一定要考虑。（废话，当然要考虑位置因素，可视化图参考意义不大）</p>
+<h1 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h1><p>根据以上的分析，我们模型要综合考虑图像、文本、位置信息（这里我们有做时间序列问题，感觉报告时间跟有蜜蜂活动时间关联不大，很多报告都是死蜜蜂）。这里我构建了4个模块（module），每个模块打一个分（score），然后根据每个模块不同的重要程度做一件加权得分，作为该报告的得分。通过得分进行排序，获得我们第三问的优先级，分数越高，越可能是AGH。模型图如下，我下面分别说说每部分的实现方法。<br><img src="https://img-blog.csdnimg.cn/20210212232229339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="AGH检测网络（AGH-detection-network）"><a href="#AGH检测网络（AGH-detection-network）" class="headerlink" title="AGH检测网络（AGH detection network）"></a>AGH检测网络（AGH detection network）</h2><p>对于图片，我们第一个想到的就是检测大黄蜂的种类。然而，正样本只有14个，还不是每个都有图片。即使加上附件文档里的AGH图片，也没多少。所以我们直接设计一个分类网络会面临数据分布不均的情况，于是我们使用了一个很巧妙的方法（我称之为两阶段方法）：首先我们手工标注一些图片的bounding box，<strong>pre-train</strong>一个昆虫目标检测网络；然后使用数据增强后的AGH做<strong>fine-tuning</strong>，由于网络参数已经初始化，此时模型会学到更多的细节，也就是这些细节可以把AGH和其他蜜蜂辨别出来。</p>
+<p>我们使用了9种数据增强方法，考虑到很多图片是监控摄像头拍到的，所以用了一些云、雨、雾的增强。效果如下：<br><img src="https://img-blog.csdnimg.cn/2021021223305262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我们采用的目标检测baseline是2020年7月发布的<strong>YOLOv5</strong>，又快又准。我们把检测出来的置信度作为评分，如果是类似的昆虫，那么会获得一个负分：<br><img src="https://img-blog.csdnimg.cn/20210212233324235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="环境识别网络（Environment-recognition-network）"><a href="#环境识别网络（Environment-recognition-network）" class="headerlink" title="环境识别网络（Environment recognition network）"></a>环境识别网络（Environment recognition network）</h2><p>我们通过查阅资料发现97%以上的亚洲大黄蜂都住在地下，与住在地上的蜜蜂很不同。于是我们将增强后的巢穴图做目标检测，获得一个环境的评分，与上面的过程类似，就不赘述了。</p>
+<h2 id="文本因素（Text-Factors）"><a href="#文本因素（Text-Factors）" class="headerlink" title="文本因素（Text Factors）"></a>文本因素（Text Factors）</h2><p>上面说到文本很脏，不能使用深度方法，我们的解决方案是使用<strong>TF-IDF+相似度余弦</strong>（不懂可以自行百度），简单来说，就是通过TF-IDF判断文本中不同单词的重要性程度，然后将两个向量通过相似度余弦判断与维基百科描述的相似度，作为文本评分。示意图如图所示：<br><img src="https://img-blog.csdnimg.cn/20210212234001910.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="位置因素（Location-Factors）"><a href="#位置因素（Location-Factors）" class="headerlink" title="位置因素（Location Factors）"></a>位置因素（Location Factors）</h2><p>这就很容易了，report地点与positive样本越近，越重要，但要注意不能直接用经纬度相减，要使用球面坐标公式转换为两点间距离。</p>
+<h2 id="调度优先级（Investigation-Priority）"><a href="#调度优先级（Investigation-Priority）" class="headerlink" title="调度优先级（Investigation Priority）"></a>调度优先级（Investigation Priority）</h2><p>把上面的因素做一个加权得分，再排序即可。我们设计的公式如下：<br><img src="https://img-blog.csdnimg.cn/20210212234535358.png" alt="在这里插入图片描述"><br>其中b代表bee，e代表environment，n代表note，三个得分从上文可以获得，前面撑上我们的超参数，用于调节不同信息的权重。分母使用距离的对数（防止大小差异过大）加平滑系数（防止除零）。</p>
+<p>到这里我们的模型就建立完成了，其他的就是预处理、训练、调参的过程。更详细的不再赘述。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总之，这次美赛C题是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。最重要的无非分清主次，看清我们模型最重要的作用是什么（给政府有限资源的优先调度），然后分解各个因素，形成解决方案。</p>
+<p>本文禁止转载，如需转载或使用图片请先私信取得允许。</p>
 ]]></content>
       <tags>
-        <tag>BUG</tag>
+        <tag>数学</tag>
+        <tag>Deep Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -155,61 +152,64 @@
       </tags>
   </entry>
   <entry>
-    <title>Confirming the Buzz about Hornets——2021美赛C题思路及题解</title>
-    <url>/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2021年的美赛结束了，我们选择了大数据相关的C题。看网上对C题的讨论不多，这里我对该题做一下分析并给出我们的解决方案，有什么意见或建议欢迎与我探讨。</p>
-<p>个人认为，这是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。所以我们要思考怎样合理运用每个报告的图片、文本、位置、时间信息，对报告做一个分类，或者对所有报告风险程度做一个排序。</p>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="题目描述（翻译版，重点内容加粗）"><a href="#题目描述（翻译版，重点内容加粗）" class="headerlink" title="题目描述（翻译版，重点内容加粗）"></a>题目描述（翻译版，重点内容加粗）</h2><p>Problem C: Confirming the Buzz about Hornets<br>问题C：确认关于黄蜂的传言</p>
-<p>2019年9月，在加拿大不列颠哥伦比亚省的温哥华岛上发现了胡蜂（Vespa mandarinia，又称亚洲大黄蜂）的殖民地。鸟巢很快被摧毁，但这一事件的消息迅速传遍了整个地区。从那时起，在邻近的华盛顿州发生了几次确认的害虫目击事件，以及大量的错误目击事件。下面的图1显示了探测、大黄蜂手表和公众目击的地图。<br><img src="https://img-blog.csdnimg.cn/20210211103345716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>胡蜂（Vespa mandarinia）是世界上最大的黄蜂种类，其巢的出现令人震惊。此外，大黄蜂是欧洲蜜蜂的掠食者，入侵并破坏它们的巢穴。少量的黄蜂能够在短时间内摧毁整个欧洲蜜蜂群落。同时，它们是被认为是农业害虫的其他昆虫的贪婪的掠食者。</p>
-<p>大黄蜂的生命周期与其他许多黄蜂相似。受精后在春天出现，并开始一个新的群体。秋天，新蜂王离开巢，在土里过冬，等待春天的到来。<strong>一只新蜂王的筑巢距离估计为30公里</strong>。有关亚洲黄蜂的更多详细信息，请参见问题附件，也可以在网上找到。</p>
-<p>由于胡蜂对当地蜜蜂种群的潜在严重影响，胡蜂的存在会引起很大的焦虑。华盛顿州已经建立了帮助热线和一个网站，供人们报告这些黄蜂的目击情况。根据这些来自公众的报告，国家必须决定如何将其有限的资源优先用于后续补充调查。虽然一些报告已被确定为胡蜂，许多其他目击已证明是其他类型的昆虫。</p>
-<p><strong>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</strong></p>
-<p>你的论文应该探讨和解决以下几个方面：</p>
-<ul>
-<li>解决并讨论是否可以预测这种有害生物随时间的传播，以及准确度如何。</li>
-<li>大多数报道的目击都把其他黄蜂误认为是胡蜂。仅使用提供的数据集文件和（可能）提供的图像文件来创建、分析和讨论预测错误分类可能性的模型。</li>
-<li>利用你的模型讨论你的分类分析<strong>如何优先调查</strong>最有可能是正面目击的报告。</li>
-<li>说明随着时间的推移，如果有其他新报告，如何更新模型，以及更新的频率。</li>
-<li>利用你的模型，有什么证据可以证明华盛顿州已经消灭了这种有害生物？</li>
-</ul>
-<p>最后，你的报告应该包括一份两页的备忘录，总结你在华盛顿州农业部的调查结果。</p>
-<h2 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h2><p><strong>针对这个问题，我们提供了以下四种材料。提供的数据文件包含此问题应使用的唯一数据。</strong></p>
-<p><em>2021MCM_ProblemC_Vespamandarinia.pdf</em><br>来自宾夕法尼亚州立大学的背景资料描述了这种昆虫。</p>
-<p><em>2021MCM_ProblemC_DataSet.xlsx</em><br>包含4440份目击报告的电子表格，包含以下字段：<br><strong>GlobalID</strong>：每个目击记录的唯一标签。<br><strong>Detection Date</strong>：报告的发现日期。<br><strong>Notes</strong>: 提交报告的人提供的评论。这可以是一名公众成员，偶尔也可以是一名国家雇员。<br><strong>Lab Status</strong>：美国国务院对目击事件的官方分类。经过分析，身份证阳性意味着这是一只亚洲大黄蜂。否定的ID意味着它被排除在外。未处理意味着它还没有被分类。未核实意味着由于缺乏信息而没有作出决定。<br><strong>Lab Comments</strong>：国家昆虫学实验室分析后添加到记录中的内容。<br><strong>Submission Date</strong>：向国家提交报告的日期。这个日期可以是在检测日期之后。<br><strong>Latitude</strong>：维度，这些数据是由国家在转换报告提供的地址后提供的。<br><strong>Longitude</strong>：经度，这些数据是由国家在转换报告提供的地址后提供的。</p>
-<p><em>2021MCM_Probem_C_Files.rar</em><br>有3305张目击报告中的图片。</p>
-<p><em>2021MCM_Problem_C_Images_by_GlobalID.xlsx</em><br>将图像映射到具有以下字段的目击的电子表格:<br><strong>Filename</strong>:rar文件夹中图像的名称<br><strong>Globalld</strong>:每个目击记录的唯一标签。这在两个电子表格中是一致的。<br><strong>Filetype</strong>:文件类型</p>
-<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>看知乎上@数学不止一点难 说得很实在：</p>
-<blockquote>
-<p>红色的表示positive的，我们可以看到，基本上没啥positive的案例，百分之零点零几的准确率吧，所以工作人员很烦这些没事找事的人，但是上头布置下来的任务又必须得完成，那咋办呢，就希望你能给出一种自动识别的办法，即根据目击者的经纬度，提供的数据(图片视频文件啥的)以及口头描述(Notes)，来确定他上报的这个是不是真的。<br> 同时呢，为了让他们在报告的时候向上司装B，工作人员希望你的模型具有统计学意义，这意味着你的模型里面要做各种假设以及各种统计学检验。</p>
-</blockquote>
-<p>也就是说，这玩意像新冠病毒，数量少，但是检测的多，所以我们的模型<strong>召回率</strong>（不懂的可以自行百度）要高，对准确率要求相对没有那么严格。召回率咋提高？降低评判标准呗，有点像就认为可能是大黄蜂，宁可错杀不能放过。</p>
-<p>接下来我们分析一下题目。有两个细节希望大家注意：</p>
+    <title>使用树莓派3B+刷OpenWrt打造主路由</title>
+    <url>/uncategorized/%E3%80%90Raspberry%20Pi%E3%80%91%E4%BD%BF%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE3B+%E5%88%B7OpenWrt%E6%89%93%E9%80%A0%E4%B8%BB%E8%B7%AF%E7%94%B1%E5%99%A8</url>
+    <content><![CDATA[<h1 id="背景情况"><a href="#背景情况" class="headerlink" title="背景情况"></a>背景情况</h1><p>装了小区宽带，虽然是光纤入户，但只有100兆（谁让他便宜呢，平时父母用对带宽需求不是很高）。家里还有一个老TP-Link路由器，速度极为拉胯，实测只有20兆左右。正好我带回来一个树莓派3B+，在网上查阅他是通过USB 2.0的千兆网卡，这样的话上限可以有500兆左右带宽，做个软路由绰绰有余。在网上查阅发现大家大都使用树莓派刷OpenWrt打造旁路路由（也就是插在路由器上的路由器），而我却需要主路由，直接连在光猫上给全家使用。经过一晚上的折腾终于搞定了，再此感谢帮助我的qhy学长，学长计算机网络技术是真的牛！</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p>树莓派3B+及其电源，一张SD卡（以及读卡器），一根网线。</p>
+<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h2><p>首先我们要把OpenWrt刷入SD卡。推荐下载最新版OpenWrt，官网会比较慢，使用清华大学镜像基本可以秒下。在<a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.6/targets/brcm2708/bcm2709/" target="_blank" rel="noopener">传送门</a>里点击openwrt-19.07.6-brcm2708-bcm2709-rpi-2-ext4-factory.img.gz，如果怕断电就下squashfs那个，openwrt-19.07.6-brcm2708-bcm2709-rpi-2-squashfs-factory.img.gz。<br><img src="https://img-blog.csdnimg.cn/20210127225929363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下载后解压即可，会有一个.img的文件。下面按顺序操作：</p>
 <ol>
-<li>我们从大题目（Confirming the Buzz about Hornets——确认关于黄蜂的传言）看出，buzz一语双关，表面看是嗡嗡声的意思，其实后面用了about是为了双关传言的语义（不然就用the Buzz of Hornets了）。</li>
-<li>此外在给出五个问题之前，题目重点强调了：<blockquote>
-<p>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</p>
-</blockquote>
-</li>
+<li>将SD卡插入读卡器或拓展坞连入电脑，输入<code>diskutil list</code>命令。一般来说最后一个显示(internal, physical)的就是你的SD卡，我们这里假设是/dev/disk2。<br><img src="https://img-blog.csdnimg.cn/20210127231331274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>然后取消挂载sd卡：<code>diskutil umountDisk disk4</code>，注意下一步dd操作之前必须umount。</li>
+<li>然后输入 <code>sudo dd if=/Users/bojack/Downloads/openwrt-19.07.6-brcm2708-bcm2709-rpi-2-squashfs-factory.img of=/dev/disk2 bs=1m</code>，出现如下信息表示成功。其中if后面加入写入文件路径，of加入挂在磁盘位置，bs=bytes，即同时设置读入/输出的块大小为bytes个字节。<br><img src="https://img-blog.csdnimg.cn/20210127231805504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>输入<code>sync</code>命令，然后才能拔出SD卡。平时umount的时候会自动sync，但是现在是dd，没挂载就得手动sync。</li>
 </ol>
-<p>综合上面两点，再去读五个问题，可以看出出题人重点要我们解决第二问（分析某个报告是不是AGH）和第三问（给不同报告一个调度资源的优先级）。因而第一问的传播情况是一个引子，想让我们熟悉一下问题的数据以及背景情况；第四问（模型更新）和第五问（何时灭绝）就是结合实际情况对我们模型的阐述以及一些理（语）论（文）分（建）析（模）。所以我这里重点分析一下二三问的模型如何建立，想获得详细论文及代码可以私信我。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="数据清洗与分析"><a href="#数据清洗与分析" class="headerlink" title="数据清洗与分析"></a>数据清洗与分析</h2><p>根据新闻，2019年之前AGH并未入侵北美。同时我们观察报告也可以发现，2019年之前的报告大都是人们的回忆，是一些“莫须有”，所以我们清理了新闻之前的报告。然后按照有无Image、有无Notes、以及每种情况下面的四种Status进行数据可视化，如下：<br><img src="https://img-blog.csdnimg.cn/20210212225445586.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过观察可视化，我们可以得出以下结论：超过一半的样本没有图像，绝大多数unverified status的样本没有图片。因此，图像是判断样品是否为AGH的最重要因素。换句话说，这个标签是专家打的，没图的基本都不能确实，而有图的很少有不能确实的。</p>
-<p>其次看看文本，我们认为文本信息可能都判断报告是不是大黄蜂有意义。实际上。。。数据很脏，有句子有短语有单词有空值，情感分析什么的基本白扯，聚类估计也很离散，还是考虑一些传统方法勉强能打。</p>
-<p>我们再看看位置信息：<br><img src="https://img-blog.csdnimg.cn/20210212230100188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>报告是向着“疫情点”四周扩散的，所以位置因素一定要考虑。（废话，当然要考虑位置因素，可视化图参考意义不大）</p>
-<h1 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h1><p>根据以上的分析，我们模型要综合考虑图像、文本、位置信息（这里我们有做时间序列问题，感觉报告时间跟有蜜蜂活动时间关联不大，很多报告都是死蜜蜂）。这里我构建了4个模块（module），每个模块打一个分（score），然后根据每个模块不同的重要程度做一件加权得分，作为该报告的得分。通过得分进行排序，获得我们第三问的优先级，分数越高，越可能是AGH。模型图如下，我下面分别说说每部分的实现方法。<br><img src="https://img-blog.csdnimg.cn/20210212232229339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="AGH检测网络（AGH-detection-network）"><a href="#AGH检测网络（AGH-detection-network）" class="headerlink" title="AGH检测网络（AGH detection network）"></a>AGH检测网络（AGH detection network）</h2><p>对于图片，我们第一个想到的就是检测大黄蜂的种类。然而，正样本只有14个，还不是每个都有图片。即使加上附件文档里的AGH图片，也没多少。所以我们直接设计一个分类网络会面临数据分布不均的情况，于是我们使用了一个很巧妙的方法（我称之为两阶段方法）：首先我们手工标注一些图片的bounding box，<strong>pre-train</strong>一个昆虫目标检测网络；然后使用数据增强后的AGH做<strong>fine-tuning</strong>，由于网络参数已经初始化，此时模型会学到更多的细节，也就是这些细节可以把AGH和其他蜜蜂辨别出来。</p>
-<p>我们使用了9种数据增强方法，考虑到很多图片是监控摄像头拍到的，所以用了一些云、雨、雾的增强。效果如下：<br><img src="https://img-blog.csdnimg.cn/2021021223305262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我们采用的目标检测baseline是2020年7月发布的<strong>YOLOv5</strong>，又快又准。我们把检测出来的置信度作为评分，如果是类似的昆虫，那么会获得一个负分：<br><img src="https://img-blog.csdnimg.cn/20210212233324235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="环境识别网络（Environment-recognition-network）"><a href="#环境识别网络（Environment-recognition-network）" class="headerlink" title="环境识别网络（Environment recognition network）"></a>环境识别网络（Environment recognition network）</h2><p>我们通过查阅资料发现97%以上的亚洲大黄蜂都住在地下，与住在地上的蜜蜂很不同。于是我们将增强后的巢穴图做目标检测，获得一个环境的评分，与上面的过程类似，就不赘述了。</p>
-<h2 id="文本因素（Text-Factors）"><a href="#文本因素（Text-Factors）" class="headerlink" title="文本因素（Text Factors）"></a>文本因素（Text Factors）</h2><p>上面说到文本很脏，不能使用深度方法，我们的解决方案是使用<strong>TF-IDF+相似度余弦</strong>（不懂可以自行百度），简单来说，就是通过TF-IDF判断文本中不同单词的重要性程度，然后将两个向量通过相似度余弦判断与维基百科描述的相似度，作为文本评分。示意图如图所示：<br><img src="https://img-blog.csdnimg.cn/20210212234001910.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="位置因素（Location-Factors）"><a href="#位置因素（Location-Factors）" class="headerlink" title="位置因素（Location Factors）"></a>位置因素（Location Factors）</h2><p>这就很容易了，report地点与positive样本越近，越重要，但要注意不能直接用经纬度相减，要使用球面坐标公式转换为两点间距离。</p>
-<h2 id="调度优先级（Investigation-Priority）"><a href="#调度优先级（Investigation-Priority）" class="headerlink" title="调度优先级（Investigation Priority）"></a>调度优先级（Investigation Priority）</h2><p>把上面的因素做一个加权得分，再排序即可。我们设计的公式如下：<br><img src="https://img-blog.csdnimg.cn/20210212234535358.png" alt="在这里插入图片描述"><br>其中b代表bee，e代表environment，n代表note，三个得分从上文可以获得，前面撑上我们的超参数，用于调节不同信息的权重。分母使用距离的对数（防止大小差异过大）加平滑系数（防止除零）。</p>
-<p>到这里我们的模型就建立完成了，其他的就是预处理、训练、调参的过程。更详细的不再赘述。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总之，这次美赛C题是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。最重要的无非分清主次，看清我们模型最重要的作用是什么（给政府有限资源的优先调度），然后分解各个因素，形成解决方案。</p>
-<p>本文禁止转载，如需转载或使用图片请先私信取得允许。</p>
+<p>这样我们的前期准备就完成了。</p>
+<h1 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h1><p>将SD卡插入树莓派，树莓派使用网线连接电脑（注意官方版本就应该这么做），然后开机。一定要先插网线后把树莓派开机。然后在浏览器输入<a href="http://192.168.1.1/" target="_blank" rel="noopener">http://192.168.1.1/</a>   进入OpenWrt管理页面。这时候可以随便设置个密码，否则Google Chrome会一直给你说不安全。</p>
+<h2 id="配置无线网"><a href="#配置无线网" class="headerlink" title="配置无线网"></a>配置无线网</h2><p>由于树莓派3B+只有一个网口，要留给光猫接入，所以要先配置无线网。在最上面点击Network–Wireless，如图：<br><img src="https://img-blog.csdnimg.cn/20210127232716745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后在SSID: OpenWrt的右边点击Edit，进入管理无线网页面。然后在下面ESSID处写你的WIFI名，以后就用这个名字登陆WIFI，如图：<br><img src="https://img-blog.csdnimg.cn/20210127232938795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再点击Wireless Security，依次选择下图中的选项（这样是最安全的设置），然后在Key处设置密码：<br><img src="https://img-blog.csdnimg.cn/20210127233102774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Save，然后Save&amp;Apply，等待一会然后断掉网线。这时候使用电脑WIFI连接树莓派，使用刚才设置的账号密码即可。重新登陆<a href="http://192.168.1.1/" target="_blank" rel="noopener">http://192.168.1.1/</a> 即可。</p>
+<h2 id="配置WAN和LAN"><a href="#配置WAN和LAN" class="headerlink" title="配置WAN和LAN"></a>配置WAN和LAN</h2><p>由于我们要把树莓派作为主路由，所以要配置wan口。点击Network–Interfaces处，如图：<br><img src="https://img-blog.csdnimg.cn/20210127233442226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后点击Add new interface…，依次设置名称wan；协议PPPoE；包括以下接口选eth0：<br><img src="https://img-blog.csdnimg.cn/20210127233749408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这样wan口就设置好了。然后退回Interfaces页面，修改 br-lan，进入物理设置，去掉eth0，Save&amp;Apply：<br><img src="https://img-blog.csdnimg.cn/20210127233955923.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>最后修改WAN，把pppoe的用户密码写上，也就是ISP的账号密码（办理宽带时候给的账号密码）：<br><img src="https://img-blog.csdnimg.cn/2021012723412171.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>此时将树莓派用网线连接光猫，就能用了。如果还是不行，检查wan的防火墙是否选择了wan：<br><img src="https://img-blog.csdnimg.cn/20210127234300360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="速度测速"><a href="#速度测速" class="headerlink" title="速度测速"></a>速度测速</h1><p><img src="https://img-blog.csdnimg.cn/20210127234519490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下行速度没什么问题，上行有些低，也不知道是因为什么（怀疑是宽带问题），不过基本够用。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://vantageso.com/raspberry-openwrt-lu-you-qi/" target="_blank" rel="noopener">2020 | 树莓派刷openwrt打造旁路由器全攻略</a><br><a href="https://www.lxx1.com/4709" target="_blank" rel="noopener">树莓派3B+刷Openwrt，打造全能路由器</a><br><a href="https://www.lxx1.com/4711" target="_blank" rel="noopener">Linux下制作树莓派系统盘</a><br><a href="https://blog.csdn.net/zhangkaiadl/article/details/104690088" target="_blank" rel="noopener">树莓派安装OpenWrt</a></p>
 ]]></content>
       <tags>
-        <tag>数学</tag>
-        <tag>Deep Learning</tag>
+        <tag>BUG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OI刷题记录</title>
+    <url>/uncategorized/OI%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95</url>
+    <content><![CDATA[<h1 id="OI刷题记录"><a href="#OI刷题记录" class="headerlink" title="OI刷题记录"></a>OI刷题记录</h1><p><img src="https://githubpage.oss-cn-qingdao.aliyuncs.com/mypic/%E9%9D%92%E5%B2%9B%E6%A0%A1%E5%8C%BA%E2%80%94%E2%80%94%E6%93%8D%E5%9C%BA.jpg"></p>
+<h2 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h2><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
+<p>中心扩展法，时间复杂度$O(n^2)$，空间复杂度$O(n)$，比动态规划省空间（$O(n^2)$）。注意不要数组越界，先判断，后使用。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></p>
+<p>给定一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长的包含有效括号的子串的长度。两种做法，使用栈和动态规划。</p>
+<p>动规分两种情况：<br>$dp[i]=dp[i−2]+2$<br>$dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2$<br>那么，求$dp[i]dp[i]$就变成了求$dp[i - 1]dp[i−1]$、$ dp[i - 2]dp[i−2]$、$dp[i - dp[i - 1] - 2]dp[i−dp[i−1]−2]$的子问题。<br>代码中注意不要左端数组越界。</p>
+<p>使用栈思路很简单，初始化一串0，能匹配的括号标成1，扫一遍记录最长的1的数量即可。</p>
+<p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
+<p>一个动规题，起初用BFS搜索TLE了，剪枝比较麻烦，就改成了动规，行列扫描一遍，$O(m*n)$时间即可解决。</p>
+<p>注意动态声明数组时需要初始化，但是不能用memset，使用方法如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> **rec=<span class="keyword">new</span> <span class="keyword">int</span>*[m]();<span class="comment">//加一个()即可初始化为0</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)rec[i]=<span class="keyword">new</span> <span class="keyword">int</span>[n]();<span class="comment">//加一个()即可初始化为0</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode-cn.com/problems/unique-paths-ii/" target="_blank" rel="noopener">63. 不同路径 II</a></p>
+<p>是62的加强版，同样要初始化第一行和第一列，一旦有一个挡住了，后面的全是0，因为第一行和第一列只能从左边或上边延续下来。其他的地方判断有没有障碍，有就置零，没有就左和上相加即可。</p>
+<p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
+<p>一道简单dp，注意输入是字符串不是数字。<br>同时需要特判，比如”0”输出0，”60”输出0，”100”输出0。</p>
+<p><a href="https://leetcode-cn.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">96. 不同的二叉搜索树</a></p>
+<p>一道dp，令dp[i]为以 1…i为节点组成的二叉搜索树种数，可以看成以1…i为根的二叉搜索树之和，其中root(j)=dp[j-1]*dp[i-j]，即左右子树二叉搜索树种数之积。</p>
+<p><a href="https://leetcode-cn.com/problems/is-graph-bipartite/" target="_blank" rel="noopener">785. 判断二分图</a></p>
+<p>一道图论题，判断给定的无向图是不是二分图。使用染色法解决，相邻的顶点不能是同一种颜色即可。题目没说连通，要以所有点为起始点遍历整个图。</p>
+<h2 id="NOI"><a href="#NOI" class="headerlink" title="NOI"></a>NOI</h2><p><a href="http://noi.openjudge.cn/ch0206/1996/" target="_blank" rel="noopener">1996:登山</a></p>
+<p>一道动态规划，有点文字游戏，要考虑下山过程也会参观景点，复杂度$O(n^2)$</p>
+<p><a href="http://noi.openjudge.cn/ch0405/2454/" target="_blank" rel="noopener">2454:雷涛的小猫</a></p>
+<p>动态规划，分两种情况转移，一种是跳过来，一种直接下爬一格，复杂度$O(n^2)$。注意跳过来的数，即高度为h的最大值。</p>
+<p><a href="http://noi.openjudge.cn/ch0405/1665/" target="_blank" rel="noopener">1665:完美覆盖</a></p>
+<p>动态规划，一开始没做出来，需要推导表达式，参考<a href="https://blog.csdn.net/qq_26919935/article/details/77898382" target="_blank" rel="noopener">超链接</a><br>如果题目改为n*m的棋盘。1*k的棋子，则较为麻烦，参考链接<a href="https://zhuanlan.zhihu.com/p/57474309" target="_blank" rel="noopener">传送门1</a>  <a href="https://www.cnblogs.com/drizzlecrj/archive/2008/12/23/1360670.html" target="_blank" rel="noopener">传送门2</a></p>
+<p><a href="http://noi.openjudge.cn/ch0407/7591/" target="_blank" rel="noopener">7591:反质数</a></p>
+<p>经典数论+搜索的题目，暴力穷举打表需要跑一个多小时，很慢。<br>搜索做法是将1–20000000分解为10多个质数的乘积，其中每个质数可以出现多次<br>从1–2–4–8–$2^n$–$2^{n-1}$*3​DFS搜索，但要保证每个数字只搜索一遍才能O(n)，方法是每个数只搜索比他大的数<br>比如3✖️3✖️3可以，3*2不行因为2*3已经搜过<br>在一个20000000的数组中标记每个数的质因子个数，打表后维护一个max，从而找到真正的反质数。</p>
+<p><a href="http://noi.openjudge.cn/ch0407/1819/" target="_blank" rel="noopener">1819:木棒</a></p>
+<p>给定短木棒数量和长度，求能拼成的长木棒的最短长度。解决方法是求和然后从n到1枚举木棒数量，即可从小到大枚举原木棒长度。对于每个可能的长度进行DFS搜索，DFS两个参数为要拼的木棒长度和剩余短木棒数量。但要注意剪枝：<br>如果对于一个新的原木棒，最长的短木棒用不了，则这根最长的短木棒永远用不了；<br>只拟合前几根棒子，早停剪枝（比如原长为6，拟合完前面的剩余短木棒长度为4 5 4 5 4 5……）。</p>
+]]></content>
+      <tags>
+        <tag>OI</tag>
       </tags>
   </entry>
   <entry>
