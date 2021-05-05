@@ -1,16 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Confirming the Buzz about Hornets——2021美赛C题思路及题解</title>
+    <url>/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2021年的美赛结束了，我们选择了大数据相关的C题。看网上对C题的讨论不多，这里我对该题做一下分析并给出我们的解决方案，有什么意见或建议欢迎与我探讨。</p>
+<p>个人认为，这是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。所以我们要思考怎样合理运用每个报告的图片、文本、位置、时间信息，对报告做一个分类，或者对所有报告风险程度做一个排序。</p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="题目描述（翻译版，重点内容加粗）"><a href="#题目描述（翻译版，重点内容加粗）" class="headerlink" title="题目描述（翻译版，重点内容加粗）"></a>题目描述（翻译版，重点内容加粗）</h2><p>Problem C: Confirming the Buzz about Hornets<br>问题C：确认关于黄蜂的传言</p>
+<p>2019年9月，在加拿大不列颠哥伦比亚省的温哥华岛上发现了胡蜂（Vespa mandarinia，又称亚洲大黄蜂）的殖民地。鸟巢很快被摧毁，但这一事件的消息迅速传遍了整个地区。从那时起，在邻近的华盛顿州发生了几次确认的害虫目击事件，以及大量的错误目击事件。下面的图1显示了探测、大黄蜂手表和公众目击的地图。<br><img src="https://img-blog.csdnimg.cn/20210211103345716.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>胡蜂（Vespa mandarinia）是世界上最大的黄蜂种类，其巢的出现令人震惊。此外，大黄蜂是欧洲蜜蜂的掠食者，入侵并破坏它们的巢穴。少量的黄蜂能够在短时间内摧毁整个欧洲蜜蜂群落。同时，它们是被认为是农业害虫的其他昆虫的贪婪的掠食者。</p>
+<p>大黄蜂的生命周期与其他许多黄蜂相似。受精后在春天出现，并开始一个新的群体。秋天，新蜂王离开巢，在土里过冬，等待春天的到来。<strong>一只新蜂王的筑巢距离估计为30公里</strong>。有关亚洲黄蜂的更多详细信息，请参见问题附件，也可以在网上找到。</p>
+<p>由于胡蜂对当地蜜蜂种群的潜在严重影响，胡蜂的存在会引起很大的焦虑。华盛顿州已经建立了帮助热线和一个网站，供人们报告这些黄蜂的目击情况。根据这些来自公众的报告，国家必须决定如何将其有限的资源优先用于后续补充调查。虽然一些报告已被确定为胡蜂，许多其他目击已证明是其他类型的昆虫。</p>
+<p><strong>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</strong></p>
+<p>你的论文应该探讨和解决以下几个方面：</p>
+<ul>
+<li>解决并讨论是否可以预测这种有害生物随时间的传播，以及准确度如何。</li>
+<li>大多数报道的目击都把其他黄蜂误认为是胡蜂。仅使用提供的数据集文件和（可能）提供的图像文件来创建、分析和讨论预测错误分类可能性的模型。</li>
+<li>利用你的模型讨论你的分类分析<strong>如何优先调查</strong>最有可能是正面目击的报告。</li>
+<li>说明随着时间的推移，如果有其他新报告，如何更新模型，以及更新的频率。</li>
+<li>利用你的模型，有什么证据可以证明华盛顿州已经消灭了这种有害生物？</li>
+</ul>
+<p>最后，你的报告应该包括一份两页的备忘录，总结你在华盛顿州农业部的调查结果。</p>
+<h2 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h2><p><strong>针对这个问题，我们提供了以下四种材料。提供的数据文件包含此问题应使用的唯一数据。</strong></p>
+<p><em>2021MCM_ProblemC_Vespamandarinia.pdf</em><br>来自宾夕法尼亚州立大学的背景资料描述了这种昆虫。</p>
+<p><em>2021MCM_ProblemC_DataSet.xlsx</em><br>包含4440份目击报告的电子表格，包含以下字段：<br><strong>GlobalID</strong>：每个目击记录的唯一标签。<br><strong>Detection Date</strong>：报告的发现日期。<br><strong>Notes</strong>: 提交报告的人提供的评论。这可以是一名公众成员，偶尔也可以是一名国家雇员。<br><strong>Lab Status</strong>：美国国务院对目击事件的官方分类。经过分析，身份证阳性意味着这是一只亚洲大黄蜂。否定的ID意味着它被排除在外。未处理意味着它还没有被分类。未核实意味着由于缺乏信息而没有作出决定。<br><strong>Lab Comments</strong>：国家昆虫学实验室分析后添加到记录中的内容。<br><strong>Submission Date</strong>：向国家提交报告的日期。这个日期可以是在检测日期之后。<br><strong>Latitude</strong>：维度，这些数据是由国家在转换报告提供的地址后提供的。<br><strong>Longitude</strong>：经度，这些数据是由国家在转换报告提供的地址后提供的。</p>
+<p><em>2021MCM_Probem_C_Files.rar</em><br>有3305张目击报告中的图片。</p>
+<p><em>2021MCM_Problem_C_Images_by_GlobalID.xlsx</em><br>将图像映射到具有以下字段的目击的电子表格:<br><strong>Filename</strong>:rar文件夹中图像的名称<br><strong>Globalld</strong>:每个目击记录的唯一标签。这在两个电子表格中是一致的。<br><strong>Filetype</strong>:文件类型</p>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>看知乎上@数学不止一点难 说得很实在：</p>
+<blockquote>
+<p>红色的表示positive的，我们可以看到，基本上没啥positive的案例，百分之零点零几的准确率吧，所以工作人员很烦这些没事找事的人，但是上头布置下来的任务又必须得完成，那咋办呢，就希望你能给出一种自动识别的办法，即根据目击者的经纬度，提供的数据(图片视频文件啥的)以及口头描述(Notes)，来确定他上报的这个是不是真的。<br> 同时呢，为了让他们在报告的时候向上司装B，工作人员希望你的模型具有统计学意义，这意味着你的模型里面要做各种假设以及各种统计学检验。</p>
+</blockquote>
+<p>也就是说，这玩意像新冠病毒，数量少，但是检测的多，所以我们的模型<strong>召回率</strong>（不懂的可以自行百度）要高，对准确率要求相对没有那么严格。召回率咋提高？降低评判标准呗，有点像就认为可能是大黄蜂，宁可错杀不能放过。</p>
+<p>接下来我们分析一下题目。有两个细节希望大家注意：</p>
+<ol>
+<li>我们从大题目（Confirming the Buzz about Hornets——确认关于黄蜂的传言）看出，buzz一语双关，表面看是嗡嗡声的意思，其实后面用了about是为了双关传言的语义（不然就用the Buzz of Hornets了）。</li>
+<li>此外在给出五个问题之前，题目重点强调了：<blockquote>
+<p>这个问题的主要问题是“我们如何解释公共报告提供的数据？”以及“在政府机构资源有限的情况下，我们可以采用什么策略来优先考虑这些公开报告，以便进行进一步的调查？”</p>
+</blockquote>
+</li>
+</ol>
+<p>综合上面两点，再去读五个问题，可以看出出题人重点要我们解决第二问（分析某个报告是不是AGH）和第三问（给不同报告一个调度资源的优先级）。因而第一问的传播情况是一个引子，想让我们熟悉一下问题的数据以及背景情况；第四问（模型更新）和第五问（何时灭绝）就是结合实际情况对我们模型的阐述以及一些理（语）论（文）分（建）析（模）。所以我这里重点分析一下二三问的模型如何建立，想获得详细论文及代码可以私信我。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="数据清洗与分析"><a href="#数据清洗与分析" class="headerlink" title="数据清洗与分析"></a>数据清洗与分析</h2><p>根据新闻，2019年之前AGH并未入侵北美。同时我们观察报告也可以发现，2019年之前的报告大都是人们的回忆，是一些“莫须有”，所以我们清理了新闻之前的报告。然后按照有无Image、有无Notes、以及每种情况下面的四种Status进行数据可视化，如下：<br><img src="https://img-blog.csdnimg.cn/20210212225445586.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过观察可视化，我们可以得出以下结论：超过一半的样本没有图像，绝大多数unverified status的样本没有图片。因此，图像是判断样品是否为AGH的最重要因素。换句话说，这个标签是专家打的，没图的基本都不能确实，而有图的很少有不能确实的。</p>
+<p>其次看看文本，我们认为文本信息可能都判断报告是不是大黄蜂有意义。实际上。。。数据很脏，有句子有短语有单词有空值，情感分析什么的基本白扯，聚类估计也很离散，还是考虑一些传统方法勉强能打。</p>
+<p>我们再看看位置信息：<br><img src="https://img-blog.csdnimg.cn/20210212230100188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>报告是向着“疫情点”四周扩散的，所以位置因素一定要考虑。（废话，当然要考虑位置因素，可视化图参考意义不大）</p>
+<h1 id="模型建立"><a href="#模型建立" class="headerlink" title="模型建立"></a>模型建立</h1><p>根据以上的分析，我们模型要综合考虑图像、文本、位置信息（这里我们有做时间序列问题，感觉报告时间跟有蜜蜂活动时间关联不大，很多报告都是死蜜蜂）。这里我构建了4个模块（module），每个模块打一个分（score），然后根据每个模块不同的重要程度做一件加权得分，作为该报告的得分。通过得分进行排序，获得我们第三问的优先级，分数越高，越可能是AGH。模型图如下，我下面分别说说每部分的实现方法。<br><img src="https://img-blog.csdnimg.cn/20210212232229339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="AGH检测网络（AGH-detection-network）"><a href="#AGH检测网络（AGH-detection-network）" class="headerlink" title="AGH检测网络（AGH detection network）"></a>AGH检测网络（AGH detection network）</h2><p>对于图片，我们第一个想到的就是检测大黄蜂的种类。然而，正样本只有14个，还不是每个都有图片。即使加上附件文档里的AGH图片，也没多少。所以我们直接设计一个分类网络会面临数据分布不均的情况，于是我们使用了一个很巧妙的方法（我称之为两阶段方法）：首先我们手工标注一些图片的bounding box，<strong>pre-train</strong>一个昆虫目标检测网络；然后使用数据增强后的AGH做<strong>fine-tuning</strong>，由于网络参数已经初始化，此时模型会学到更多的细节，也就是这些细节可以把AGH和其他蜜蜂辨别出来。</p>
+<p>我们使用了9种数据增强方法，考虑到很多图片是监控摄像头拍到的，所以用了一些云、雨、雾的增强。效果如下：<br><img src="https://img-blog.csdnimg.cn/2021021223305262.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>我们采用的目标检测baseline是2020年7月发布的<strong>YOLOv5</strong>，又快又准。我们把检测出来的置信度作为评分，如果是类似的昆虫，那么会获得一个负分：<br><img src="https://img-blog.csdnimg.cn/20210212233324235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="环境识别网络（Environment-recognition-network）"><a href="#环境识别网络（Environment-recognition-network）" class="headerlink" title="环境识别网络（Environment recognition network）"></a>环境识别网络（Environment recognition network）</h2><p>我们通过查阅资料发现97%以上的亚洲大黄蜂都住在地下，与住在地上的蜜蜂很不同。于是我们将增强后的巢穴图做目标检测，获得一个环境的评分，与上面的过程类似，就不赘述了。</p>
+<h2 id="文本因素（Text-Factors）"><a href="#文本因素（Text-Factors）" class="headerlink" title="文本因素（Text Factors）"></a>文本因素（Text Factors）</h2><p>上面说到文本很脏，不能使用深度方法，我们的解决方案是使用<strong>TF-IDF+相似度余弦</strong>（不懂可以自行百度），简单来说，就是通过TF-IDF判断文本中不同单词的重要性程度，然后将两个向量通过相似度余弦判断与维基百科描述的相似度，作为文本评分。示意图如图所示：<br><img src="https://img-blog.csdnimg.cn/20210212234001910.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTAxOTQ3OA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="位置因素（Location-Factors）"><a href="#位置因素（Location-Factors）" class="headerlink" title="位置因素（Location Factors）"></a>位置因素（Location Factors）</h2><p>这就很容易了，report地点与positive样本越近，越重要，但要注意不能直接用经纬度相减，要使用球面坐标公式转换为两点间距离。</p>
+<h2 id="调度优先级（Investigation-Priority）"><a href="#调度优先级（Investigation-Priority）" class="headerlink" title="调度优先级（Investigation Priority）"></a>调度优先级（Investigation Priority）</h2><p>把上面的因素做一个加权得分，再排序即可。我们设计的公式如下：<br><img src="https://img-blog.csdnimg.cn/20210212234535358.png" alt="在这里插入图片描述"><br>其中b代表bee，e代表environment，n代表note，三个得分从上文可以获得，前面撑上我们的超参数，用于调节不同信息的权重。分母使用距离的对数（防止大小差异过大）加平滑系数（防止除零）。</p>
+<p>到这里我们的模型就建立完成了，其他的就是预处理、训练、调参的过程。更详细的不再赘述。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总之，这次美赛C题是一道<strong>多因素综合评价问题</strong>，放到机器学习深度学习领域，可以称之为<strong>多模态评价问题</strong>。最重要的无非分清主次，看清我们模型最重要的作用是什么（给政府有限资源的优先调度），然后分解各个因素，形成解决方案。</p>
+<p>本文禁止转载，如需转载或使用图片请先私信取得允许。</p>
+]]></content>
+      <tags>
+        <tag>数学</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World！</title>
     <url>/uncategorized/Hello%20World</url>
     <content><![CDATA[]]></content>
       <tags>
+        <tag>数学</tag>
+        <tag>Deep Learning</tag>
         <tag>CG</tag>
         <tag>OI</tag>
         <tag>noip</tag>
-        <tag>数学</tag>
         <tag>概率统计</tag>
-        <tag>Deep Learning</tag>
       </tags>
   </entry>
   <entry>

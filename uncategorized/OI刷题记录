@@ -228,7 +228,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -438,7 +438,10 @@
     <a href="/uncategorized/%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99" rel="prev" title="建模学习相关资料">
       <i class="fa fa-chevron-left"></i> 建模学习相关资料
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/uncategorized/Confirming%20the%20Buzz%20about%20Hornets%E2%80%94%E2%80%942021%E7%BE%8E%E8%B5%9BC%E9%A2%98%E6%80%9D%E8%B7%AF%E5%8F%8A%E9%A2%98%E8%A7%A3" rel="next" title="Confirming the Buzz about Hornets——2021美赛C题思路及题解">
+      Confirming the Buzz about Hornets——2021美赛C题思路及题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
